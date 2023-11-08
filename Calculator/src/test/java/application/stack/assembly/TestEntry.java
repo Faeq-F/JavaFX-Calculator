@@ -1,4 +1,4 @@
-package uk.ac.rhul.cs;
+package application.stack.assembly;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import application.Randomizer;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,10 +17,11 @@ class TestEntry {
   private static Entry numberEntry;
   private static Entry symbolEntry;
 
-  private static Random random = new Random();
+  private static Random random;
 
   @BeforeEach
   void setUp() {
+    random = new Random();
     stringEntry = new Entry(Randomizer.generateRandomString());
     numberEntry = new Entry(random.nextFloat());
     symbolEntry = new Entry(Randomizer.generateRandomSymbol());

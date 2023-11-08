@@ -1,4 +1,4 @@
-package uk.ac.rhul.cs;
+package application.stack.assembly;
 
 import java.util.Objects;
 

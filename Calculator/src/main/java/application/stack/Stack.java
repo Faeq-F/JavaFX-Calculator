@@ -1,5 +1,7 @@
-package uk.ac.rhul.cs;
+package application.stack;
 
+import application.stack.assembly.EmptyStack;
+import application.stack.assembly.Entry;
 import java.util.ArrayList;
 import java.util.List;
 

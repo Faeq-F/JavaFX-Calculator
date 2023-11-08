@@ -1,5 +1,8 @@
-package uk.ac.rhul.cs;
+package application;
 
+import application.stack.Stack;
+import application.stack.assembly.Entry;
+import application.stack.assembly.Symbol;
 import java.util.Random;
 
 /**
@@ -18,7 +21,7 @@ public final class Randomizer {
    * @return a string representing what a stack's toString method should return if only the entries
    *         pushed in this method were in it.
    */
-  static String pushRandomItems(Stack stack, int givenLimit) {
+  public static String pushRandomItems(Stack stack, int givenLimit) {
     int limit;
     if (givenLimit == -1) {
       limit = random.nextInt(10000) + 1; // +1 ensures at least 1 push is made
@@ -39,7 +42,7 @@ public final class Randomizer {
    * 
    * @return the new random Entry
    */
-  static Entry newRandomEntry() {
+  public static Entry newRandomEntry() {
     switch (random.nextInt(3)) {
       case 0:
         return new Entry(generateRandomString());
@@ -56,7 +59,7 @@ public final class Randomizer {
    * 
    * @return the random string generated
    */
-  static String generateRandomString() {
+  public static String generateRandomString() {
     int length = random.nextInt(21);
     String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     char[] text = new char[length];
@@ -71,7 +74,7 @@ public final class Randomizer {
    * 
    * @return the random symbol generated
    */
-  static Symbol generateRandomSymbol() {
+  public static Symbol generateRandomSymbol() {
     return Symbol.values()[random.nextInt(6)];
   }
 

@@ -1,4 +1,4 @@
-package uk.ac.rhul.cs;
+package application.stack.assembly;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

@@ -1,9 +1,12 @@
-package uk.ac.rhul.cs;
+package application.stack;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import application.Randomizer;
+import application.stack.assembly.EmptyStack;
+import application.stack.assembly.Entry;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

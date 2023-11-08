@@ -1,4 +1,4 @@
-package uk.ac.rhul.cs;
+package application.stack.assembly;
 
 /**
  * A symbol within the calculation, i.e. mathematical operators or brackets.

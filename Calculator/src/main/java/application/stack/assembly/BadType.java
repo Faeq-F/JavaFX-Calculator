@@ -1,4 +1,4 @@
-package uk.ac.rhul.cs;
+package application.stack.assembly;
 
 /**
  * Signals that the an Entry did not hold the type of data asked for.

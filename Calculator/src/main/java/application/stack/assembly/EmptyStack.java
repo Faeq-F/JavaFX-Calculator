@@ -1,4 +1,4 @@
-package uk.ac.rhul.cs;
+package application.stack.assembly;
 
 /**
  * Signals that the stack is empty and the operation wanted cannot occur.
