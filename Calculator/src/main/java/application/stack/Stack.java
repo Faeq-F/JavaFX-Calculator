@@ -16,7 +16,7 @@ public class Stack {
   private int size;
 
   /**
-   * Constructs the stack using an ArrayList.
+   * Constructs the stack.
    */
   public Stack() {
     entries = new ArrayList<Entry>();
