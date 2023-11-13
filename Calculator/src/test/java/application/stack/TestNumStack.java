@@ -1,5 +1,6 @@
 package application.stack;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -22,13 +23,16 @@ class TestNumStack {
     assertEquals(numStack.size(), 0);
   } 
   
-  @Test
-  // Test 53
-  // Testing push adds an item (through size being 1)
-  // Solution: made push delegate to Stack.push() with a new Entry with the float passed in 
+  @Test // Test 53
   void testPushingItems() {
     numStack.push(7);
     assertEquals(numStack.size(), 1);
+  }
+  
+  @Test // Test 54
+  void testPoppingItems() {
+    numStack.push(9);
+    assertDoesNotThrow(() ->  assertEquals(numStack.pop(), 9));
   }
 
 }
