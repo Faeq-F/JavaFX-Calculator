@@ -68,13 +68,18 @@ class TestNumStack {
     });
   }
   
-  @Test // Test 55, 61
+  @Test // Test 55, 61, 66
   void testTop() {
     assertThrows(EmptyStack.class, () -> {
       numStack.top();
     });
-    numStack.push(10);
-    assertDoesNotThrow(() -> assertEquals(numStack.top(), 10));
+    for (int numEntries = 0; numEntries < new Random().nextInt(10000) + 1; numEntries++) {
+      float randomFloat = random.nextFloat();
+      numStack.push(randomFloat);
+      assertEquals(numStack.size(), numEntries + 1);
+      assertDoesNotThrow(() -> assertEquals(randomFloat, numStack.top()));
+      assertEquals(numStack.size(), numEntries + 1);
+    }
   }
   
   @Test // Test 56, 59
