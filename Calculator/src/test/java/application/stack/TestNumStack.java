@@ -3,16 +3,19 @@ package application.stack;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TestNumStack {
 
   private NumStack numStack;
+  private Random random;
 
   @BeforeEach
   void setUp() {
     numStack = new NumStack();
+    random = new Random();
   }
   
   @Test // Test 52
@@ -20,10 +23,12 @@ class TestNumStack {
     assertEquals(numStack.size(), 0);
   } 
   
-  @Test // Test 53
+  @Test // Test 53, 57
   void testPushingItems() {
-    numStack.push(7);
+    float randomFloat = random.nextFloat();
+    numStack.push(randomFloat);
     assertEquals(numStack.size(), 1);
+    assertDoesNotThrow(() -> assertEquals(numStack.top(), randomFloat));
   }
   
   @Test // Test 54

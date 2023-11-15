@@ -44,9 +44,11 @@ public class NumStack {
    * Provides the top item in the stack without removing it.
    * 
    * @return the top item in the stack
+   * @throws EmptyStack when the stack has no items
+   * @throws BadType this should not be here - will remove in due course
    */
-  public float top() {
-    return 10;
+  public float top() throws EmptyStack, BadType {
+    return numStack.top().getValue();
   }
 
   public int size() {
