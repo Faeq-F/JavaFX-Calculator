@@ -49,13 +49,14 @@ class TestNumStack {
     assertDoesNotThrow(() ->  assertEquals(numStack.pop(), 9));
   }
   
-  @Test // Test 62
+  @Test // Test 62, 63
   void testSizeWithPop() {
-    Randomizer.pushRandomFloats(numStack, 3);
+    final String itemsString = Randomizer.pushRandomFloats(numStack, 3);
     numStack.push(random.nextFloat());
     assertEquals(numStack.size(), 4);
     assertDoesNotThrow(() -> numStack.pop());
     assertEquals(numStack.size(), 3);
+    assertEquals(itemsString, numStack.toString()); //did pop remove the correct items?
   }
   
   @Test // Test 55, 61
