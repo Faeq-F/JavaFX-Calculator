@@ -15,7 +15,7 @@ class TestNumStack {
     numStack = new NumStack();
   }
   
-  @Test // Test 52 - Testing size is 0 when stack is constructed
+  @Test // Test 52
   void testSizeEmpty() {
     assertEquals(numStack.size(), 0);
   } 
