@@ -57,7 +57,9 @@ public class NumStack {
 
   @Override
   public String toString() {
-    return "The stack is currently empty";
+    return numStack.toString().replace("entries", "floats")
+        .replace("Entry holding type NUMBER has value: ", "")
+        .replace("stack", "NumStack");
   }
 
 }

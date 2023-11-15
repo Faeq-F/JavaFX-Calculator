@@ -51,9 +51,11 @@ class TestNumStack {
     assertDoesNotThrow(() -> assertEquals(numStack.top(), 10));
   }
   
-  @Test // Test 56
+  @Test // Test 56, 59
   void testToString() {
-    assertEquals(numStack.toString(), "The stack is currently empty");
+    assertEquals("The NumStack is currently empty", numStack.toString());
+    String itemsString = Randomizer.pushRandomFloats(numStack, -1);
+    assertEquals(itemsString, numStack.toString());
   }
 
 }
