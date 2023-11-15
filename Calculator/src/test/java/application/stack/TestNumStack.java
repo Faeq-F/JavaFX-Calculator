@@ -40,13 +40,14 @@ class TestNumStack {
     assertDoesNotThrow(() -> assertEquals(numStack.top(), randomFloat));
   }
   
-  @Test // Test 54, 60
+  @Test // Test 54, 60, 64
   void testPoppingItems() {
     assertThrows(EmptyStack.class, () -> {
       numStack.pop();
     });
-    numStack.push(9);
-    assertDoesNotThrow(() ->  assertEquals(numStack.pop(), 9));
+    float randomFloat = random.nextFloat();
+    numStack.push(randomFloat);
+    assertDoesNotThrow(() ->  assertEquals(numStack.pop(), randomFloat));
   }
   
   @Test // Test 62, 63
