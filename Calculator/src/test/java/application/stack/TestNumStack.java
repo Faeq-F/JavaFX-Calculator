@@ -2,8 +2,9 @@ package application.stack;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import application.Randomizer;
+import application.stack.assembly.EmptyStack;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,8 +40,11 @@ class TestNumStack {
     assertDoesNotThrow(() -> assertEquals(numStack.top(), randomFloat));
   }
   
-  @Test // Test 54
+  @Test // Test 54, 60
   void testPoppingItems() {
+    assertThrows(EmptyStack.class, () -> {
+      numStack.pop();
+    });
     numStack.push(9);
     assertDoesNotThrow(() ->  assertEquals(numStack.pop(), 9));
   }
