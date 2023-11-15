@@ -3,6 +3,7 @@ package application.stack;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import application.Randomizer;
 import application.stack.assembly.EmptyStack;
 import java.util.Random;
@@ -50,7 +51,7 @@ class TestNumStack {
     assertDoesNotThrow(() ->  assertEquals(numStack.pop(), randomFloat));
   }
   
-  @Test // Test 62, 63
+  @Test // Test 62, 63, 65
   void testSizeWithPop() {
     final String itemsString = Randomizer.pushRandomFloats(numStack, 3);
     numStack.push(random.nextFloat());
@@ -58,6 +59,13 @@ class TestNumStack {
     assertDoesNotThrow(() -> numStack.pop());
     assertEquals(numStack.size(), 3);
     assertEquals(itemsString, numStack.toString()); //did pop remove the correct items?
+    for (int itemsLeft = 3; itemsLeft > 0; itemsLeft--) {
+      assertDoesNotThrow(() -> numStack.pop());
+      assertEquals(numStack.size(), itemsLeft - 1);
+    }
+    assertThrows(EmptyStack.class, () -> {
+      numStack.pop();
+    });
   }
   
   @Test // Test 55, 61
