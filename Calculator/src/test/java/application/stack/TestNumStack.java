@@ -3,6 +3,7 @@ package application.stack;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import application.Randomizer;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,13 @@ class TestNumStack {
   void testSizeEmpty() {
     assertEquals(numStack.size(), 0);
   } 
+  
+  @Test // Test 58
+  void testSize() {
+    String itemsString = Randomizer.pushRandomFloats(numStack, -1);
+    int stackSize = itemsString.split("\n").length - 1;
+    assertEquals(stackSize, numStack.size());
+  }
   
   @Test // Test 53, 57
   void testPushingItems() {
