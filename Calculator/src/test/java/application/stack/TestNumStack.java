@@ -15,10 +15,7 @@ class TestNumStack {
     numStack = new NumStack();
   }
   
-  @Test
-  // Test 52
-  // Testing size is 0 when stack is constructed
-  // Solution: made NumStack.size() delegate responsibility to Stack.size() 
+  @Test // Test 52 - Testing size is 0 when stack is constructed
   void testSizeEmpty() {
     assertEquals(numStack.size(), 0);
   } 
@@ -33,6 +30,17 @@ class TestNumStack {
   void testPoppingItems() {
     numStack.push(9);
     assertDoesNotThrow(() ->  assertEquals(numStack.pop(), 9));
+  }
+  
+  @Test // Test 55
+  void testTop() {
+    numStack.push(10);
+    assertDoesNotThrow(() -> assertEquals(numStack.top(), 10));
+  }
+  
+  @Test // Test 56
+  void testToString() {
+    assertEquals(numStack.toString(), "The stack is currently empty");
   }
 
 }

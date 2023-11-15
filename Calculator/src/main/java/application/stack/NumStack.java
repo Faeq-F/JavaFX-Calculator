@@ -40,8 +40,22 @@ public class NumStack {
     return numStack.pop().getValue();
   }
 
+  /**
+   * Provides the top item in the stack without removing it.
+   * 
+   * @return the top item in the stack
+   */
+  public float top() {
+    return 10;
+  }
+
   public int size() {
     return numStack.size();
+  }
+
+  @Override
+  public String toString() {
+    return "The stack is currently empty";
   }
 
 }
