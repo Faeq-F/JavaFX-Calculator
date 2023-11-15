@@ -49,8 +49,11 @@ class TestNumStack {
     assertDoesNotThrow(() ->  assertEquals(numStack.pop(), 9));
   }
   
-  @Test // Test 55
+  @Test // Test 55, 61
   void testTop() {
+    assertThrows(EmptyStack.class, () -> {
+      numStack.top();
+    });
     numStack.push(10);
     assertDoesNotThrow(() -> assertEquals(numStack.top(), 10));
   }
