@@ -20,13 +20,22 @@ class TestRevPolishCalc {
 
   @Test // Test 67
   void testSingleNumber() {
-    assertDoesNotThrow(() -> assertEquals(calc.evaluate("5"), 5));
+    assertDoesNotThrow(() -> assertEquals(5, calc.evaluate("5")));
   }
   
   @Test // Test 68
   void testSingleNumberAgain() {
     float randomFloat = random.nextFloat();
-    assertDoesNotThrow(() -> assertEquals(calc.evaluate("" + randomFloat), randomFloat));
+    assertDoesNotThrow(() -> assertEquals(randomFloat, calc.evaluate("" + randomFloat)));
   }
-
+  
+  @Test // Test 69
+  void testSingleNumberWithSpaces() {
+    float randomFloat = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(randomFloat, calc.evaluate(" " + randomFloat)));
+    float randomFloat2 = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(randomFloat2, calc.evaluate(randomFloat2 + " ")));
+    float randomFloat3 = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(randomFloat3, calc.evaluate(" " + randomFloat3 + " ")));
+  }
 }
