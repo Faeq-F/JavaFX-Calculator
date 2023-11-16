@@ -22,13 +22,13 @@ class TestRevPolishCalc {
   void testSingleNumber() {
     assertDoesNotThrow(() -> assertEquals(5, calc.evaluate("5")));
   }
-  
+
   @Test // Test 68
   void testSingleNumberAgain() {
     float randomFloat = random.nextFloat();
     assertDoesNotThrow(() -> assertEquals(randomFloat, calc.evaluate("" + randomFloat)));
   }
-  
+
   @Test // Test 69
   void testSingleNumberWithSpaces() {
     float randomFloat = random.nextFloat();
@@ -38,9 +38,14 @@ class TestRevPolishCalc {
     float randomFloat3 = random.nextFloat();
     assertDoesNotThrow(() -> assertEquals(randomFloat3, calc.evaluate(" " + randomFloat3 + " ")));
   }
-  
-  @Test // Test 70
+
+  @Test // Test 70, 71
   void testSimpleAddition() {
     assertDoesNotThrow(() -> assertEquals(6, calc.evaluate("1 5 +")));
+    float randomFloat1 = random.nextFloat();
+    float randomFloat2 = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(randomFloat1 + randomFloat2,
+        calc.evaluate(randomFloat1 + " " + randomFloat2 + " +")));
   }
+
 }
