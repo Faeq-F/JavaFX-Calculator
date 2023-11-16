@@ -23,6 +23,6 @@ public class RevPolishCalc {
    * @throws InvalidExpression when the expression cannot be calculated
    */
   public float evaluate(String expr) throws InvalidExpression {
-    return 5;
+    return Float.parseFloat(expr);
   }
 }
