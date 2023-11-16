@@ -38,4 +38,9 @@ class TestRevPolishCalc {
     float randomFloat3 = random.nextFloat();
     assertDoesNotThrow(() -> assertEquals(randomFloat3, calc.evaluate(" " + randomFloat3 + " ")));
   }
+  
+  @Test // Test 70
+  void testSimpleAddition() {
+    assertDoesNotThrow(() -> assertEquals(6, calc.evaluate("1 5 +")));
+  }
 }

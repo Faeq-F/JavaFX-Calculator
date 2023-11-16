@@ -1,6 +1,8 @@
 package application.calculator;
 
 import application.stack.NumStack;
+import application.stack.assembly.BadType;
+import application.stack.assembly.EmptyStack;
 
 /**
  * Evaluates a String as a Reverse Polish (postfix) expression.
@@ -10,7 +12,7 @@ import application.stack.NumStack;
 public class RevPolishCalc {
 
   private NumStack numStack;
-  
+
   public RevPolishCalc() {
     numStack = new NumStack();
   }
@@ -23,6 +25,21 @@ public class RevPolishCalc {
    * @throws InvalidExpression when the expression cannot be calculated
    */
   public float evaluate(String expr) throws InvalidExpression {
+    String[] expression = expr.split(" ");
+    for (String section : expression) {
+      if (section.equals("+")) {
+        try {
+          return numStack.pop() + numStack.pop();
+        } catch (Exception e) {
+          // There isn't enough numbers in the stack to complete the operation
+          throw new InvalidExpression();
+        }
+      } else { // The section is a number
+        if (section != "") {
+          numStack.push(Float.parseFloat(section));
+        }
+      }
+    }
     return Float.parseFloat(expr);
   }
 }
