@@ -57,5 +57,10 @@ class TestRevPolishCalc {
     assertThrows(InvalidExpression.class, () -> calc
         .evaluate(random.nextFloat() + " " + random.nextFloat() + " + " + random.nextFloat()));
   }
+  
+  @Test // Test 75
+  void testSimpleSubtraction() {
+    assertDoesNotThrow(() -> assertEquals(0, calc.evaluate("1 1 -")));
+  }
 
 }
