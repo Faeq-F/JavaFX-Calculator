@@ -29,7 +29,7 @@ public class RevPolishCalc {
     for (String section : expression) {
       if (section.equals("+")) {
         try {
-          return numStack.pop() + numStack.pop();
+          numStack.push(numStack.pop() + numStack.pop());
         } catch (Exception e) {
           // There isn't enough numbers in the stack to complete the operation
           throw new InvalidExpression();
@@ -40,6 +40,13 @@ public class RevPolishCalc {
         }
       }
     }
-    return Float.parseFloat(expr);
+    if (numStack.size() > 1) {
+      throw new InvalidExpression();
+    }
+    try {
+      return numStack.pop();
+    } catch (Exception e) {
+      throw new InvalidExpression();
+    }
   }
 }

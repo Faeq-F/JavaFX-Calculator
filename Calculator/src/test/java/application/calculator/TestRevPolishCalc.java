@@ -50,10 +50,12 @@ class TestRevPolishCalc {
     assertDoesNotThrow(() -> assertEquals(randomFloat1 + randomFloat2,
         calc.evaluate(" " + randomFloat1 + "  " + randomFloat2 + " +    ")));
   }
-  
-  @Test // Test 73
+
+  @Test // Test 73, 74
   void testInvalidAddition() {
-    assertThrows(InvalidExpression.class, () -> assertEquals(6, calc.evaluate("1 + 5")));
+    assertThrows(InvalidExpression.class, () -> calc.evaluate("1 + 5"));
+    assertThrows(InvalidExpression.class, () -> calc
+        .evaluate(random.nextFloat() + " " + random.nextFloat() + " + " + random.nextFloat()));
   }
 
 }
