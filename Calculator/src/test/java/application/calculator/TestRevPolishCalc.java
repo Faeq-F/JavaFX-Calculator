@@ -2,6 +2,7 @@ package application.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,6 +49,11 @@ class TestRevPolishCalc {
         calc.evaluate(randomFloat1 + " " + randomFloat2 + " +")));
     assertDoesNotThrow(() -> assertEquals(randomFloat1 + randomFloat2,
         calc.evaluate(" " + randomFloat1 + "  " + randomFloat2 + " +    ")));
+  }
+  
+  @Test // Test 73
+  void testInvalidAddition() {
+    assertThrows(InvalidExpression.class, () -> assertEquals(6, calc.evaluate("1 + 5")));
   }
 
 }
