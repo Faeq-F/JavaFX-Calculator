@@ -109,8 +109,15 @@ class TestRevPolishCalc {
   // Test 81
   // Division between two numbers
   // Solution: create division branch and return required number
+  // Test 82
+  // Division between two random numbers
+  // Solution: implement division with provided numbers
   void testSimpleDivision() {
     assertDoesNotThrow(() -> assertEquals(1.5, calc.evaluate("3 2 /")));
+    float randomFloat = random.nextFloat();
+    float randomFloat2 = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(randomFloat / randomFloat2,
+        calc.evaluate(randomFloat + " " + randomFloat2 + " /")));
   }
 
 }
