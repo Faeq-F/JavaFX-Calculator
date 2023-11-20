@@ -36,7 +36,7 @@ public class RevPolishCalc {
           float result = secondNum - firstNum;
           numStack.push(result);
         } else if (section.equals("*")) {
-          return 1;
+          numStack.push(numStack.pop() * numStack.pop());
         } else { // The section is a number
           if (section != "") {
             numStack.push(Float.parseFloat(section));

@@ -84,9 +84,16 @@ class TestRevPolishCalc {
   @Test
   // Test 78
   // Multiplication between two numbers
+  // Solution: write multiplication branch
+  // Test 79
+  // Multiplication between two random numbers
   // Solution: implement multiplication
   void testSimpleMultiplication() {
     assertDoesNotThrow(() -> assertEquals(1, calc.evaluate("1 1 *")));
+    float randomFloat = random.nextFloat();
+    float randomFloat2 = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(randomFloat * randomFloat2,
+        calc.evaluate(randomFloat + " " + randomFloat2 + " *")));
   }
 
 }
