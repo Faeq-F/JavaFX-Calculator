@@ -81,4 +81,12 @@ class TestRevPolishCalc {
         .evaluate(random.nextFloat() + " " + random.nextFloat() + " - " + random.nextFloat()));
   }
 
+  @Test
+  // Test 78
+  // Multiplication between two numbers
+  // Solution: implement multiplication
+  void testSimpleMultiplication() {
+    assertDoesNotThrow(() -> assertEquals(1, calc.evaluate("1 1 *")));
+  }
+
 }
