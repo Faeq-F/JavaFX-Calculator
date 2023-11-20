@@ -119,5 +119,14 @@ class TestRevPolishCalc {
     assertDoesNotThrow(() -> assertEquals(randomFloat / randomFloat2,
         calc.evaluate(randomFloat + " " + randomFloat2 + " /")));
   }
+  
+  @Test
+  // Test 83
+  // Misplaced / symbol & too many numbers
+  void testInvalidDivision() {
+    assertThrows(InvalidExpression.class, () -> calc.evaluate("1 / 5"));
+    assertThrows(InvalidExpression.class, () -> calc
+        .evaluate(random.nextFloat() + " " + random.nextFloat() + " / " + random.nextFloat()));
+  }
 
 }
