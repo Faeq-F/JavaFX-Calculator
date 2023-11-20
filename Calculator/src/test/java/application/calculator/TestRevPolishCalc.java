@@ -95,7 +95,7 @@ class TestRevPolishCalc {
     assertDoesNotThrow(() -> assertEquals(randomFloat * randomFloat2,
         calc.evaluate(randomFloat + " " + randomFloat2 + " *")));
   }
-  
+
   @Test
   // Test 80
   // Misplaced * symbol & too many numbers
@@ -103,6 +103,14 @@ class TestRevPolishCalc {
     assertThrows(InvalidExpression.class, () -> calc.evaluate("1 * 5"));
     assertThrows(InvalidExpression.class, () -> calc
         .evaluate(random.nextFloat() + " " + random.nextFloat() + " * " + random.nextFloat()));
+  }
+
+  @Test
+  // Test 81
+  // Division between two numbers
+  // Solution: create division branch and return required number
+  void testSimpleDivision() {
+    assertDoesNotThrow(() -> assertEquals(1.5, calc.evaluate("3 2 /")));
   }
 
 }

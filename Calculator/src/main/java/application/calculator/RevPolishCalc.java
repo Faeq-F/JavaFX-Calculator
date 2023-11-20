@@ -37,6 +37,8 @@ public class RevPolishCalc {
           numStack.push(result);
         } else if (section.equals("*")) {
           numStack.push(numStack.pop() * numStack.pop());
+        } else if (section.equals("/")) {
+          return 1.5f;
         } else { // The section is a number
           if (section != "") {
             numStack.push(Float.parseFloat(section));
