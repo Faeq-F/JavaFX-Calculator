@@ -63,12 +63,22 @@ class TestRevPolishCalc {
   // Subtraction between the same number
   // Test 76
   // Subtraction between different, random numbers
+  // Solution: rearrange the floats when applying - operator
   void testSimpleSubtraction() {
     assertDoesNotThrow(() -> assertEquals(0, calc.evaluate("1 1 -")));
     float randomFloat = random.nextFloat();
     float randomFloat2 = random.nextFloat();
     assertDoesNotThrow(() -> assertEquals(randomFloat - randomFloat2,
         calc.evaluate(randomFloat + " " + randomFloat2 + " -")));
+  }
+
+  @Test
+  // Test 77
+  // Misplaced - symbol
+  void testInvalidSubtraction() {
+    assertThrows(InvalidExpression.class, () -> calc.evaluate("1 - 5"));
+    assertThrows(InvalidExpression.class, () -> calc
+        .evaluate(random.nextFloat() + " " + random.nextFloat() + " - " + random.nextFloat()));
   }
 
 }
