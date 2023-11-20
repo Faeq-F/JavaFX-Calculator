@@ -33,7 +33,7 @@ public class RevPolishCalc {
         } else if (section.equals("-")) {
           float firstNum = numStack.pop();
           float secondNum = numStack.pop();
-          float result = firstNum - secondNum;
+          float result = secondNum - firstNum;
           numStack.push(result);
         } else { // The section is a number
           if (section != "") {
