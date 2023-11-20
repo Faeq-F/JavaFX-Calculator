@@ -1,8 +1,9 @@
 package application.view;
 
+import application.calculator.OpType;
 import java.util.Scanner;
 import java.util.function.Consumer;
-import application.calculator.OpType;
+
 
 /**
  * Skeleton code for a terminal based calculator that reads an expression from the user and

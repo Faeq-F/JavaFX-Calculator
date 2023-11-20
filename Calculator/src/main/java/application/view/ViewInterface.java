@@ -4,8 +4,8 @@ package application.view;
 // case add another @author tag below mine
 // DO NOT remove my @author tag
 
-import java.util.function.Consumer;
 import application.calculator.OpType;
+import java.util.function.Consumer;
 
 /**
  * Any calculator view must implement these methods to allow the controller and the view to properly

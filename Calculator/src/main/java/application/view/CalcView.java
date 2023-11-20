@@ -1,8 +1,8 @@
 package application.view;
 
+import application.calculator.OpType;
 import java.io.IOException;
 import java.util.function.Consumer;
-import application.calculator.OpType;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
