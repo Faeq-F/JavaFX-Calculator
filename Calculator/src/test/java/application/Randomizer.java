@@ -7,6 +7,8 @@ import java.util.Random;
 
 /**
  * Contains methods to randomise anything needed by tests; entries, strings, symbols, etc.
+ * 
+ * @author zlac318
  */
 public final class Randomizer {
 
@@ -15,10 +17,10 @@ public final class Randomizer {
   /**
    * Pushes a random number of random entries to the given stack, if a limit is not given.
    * 
-   * @param stack to push entries to.
-   * @param givenLimit number of entries to push. If -1, a random amount of entries is
+   * @param stack The stack to push entries to.
+   * @param givenLimit The number of entries to push. If -1, a random amount of entries is
    *        pushed.
-   * @return a string representing what a stack's toString method should return if only the entries
+   * @return A string representing what a stack's toString method should return if only the entries
    *         pushed in this method were in it.
    */
   public static String pushRandomItems(Stack stack, int givenLimit) {
@@ -38,9 +40,9 @@ public final class Randomizer {
   }
 
   /**
-   * Creates a new random entry with a random String, float or Symbol in it.
+   * Creates a new random entry holding either a random String, float or Symbol.
    * 
-   * @return the new random Entry
+   * @return The new random Entry.
    */
   public static Entry newRandomEntry() {
     switch (random.nextInt(3)) {
@@ -55,9 +57,9 @@ public final class Randomizer {
 
   /**
    * Generates a random string (maximum length 20, minimum length 0), from the letters of the
-   * alphabet.
+   * English alphabet.
    * 
-   * @return the random string generated
+   * @return The random string generated.
    */
   public static String generateRandomString() {
     int length = random.nextInt(21);
@@ -70,9 +72,9 @@ public final class Randomizer {
   }
 
   /**
-   * Generates a random Symbol but not Symbol.INVALID.
+   * Generates a random Symbol, but not Symbol.INVALID.
    * 
-   * @return the random symbol generated
+   * @return The random symbol generated.
    */
   public static Symbol generateRandomSymbol() {
     return Symbol.values()[random.nextInt(6)];

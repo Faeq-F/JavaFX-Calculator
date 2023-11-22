@@ -1,7 +1,8 @@
 package application.stack.assembly;
 
 /**
- * A symbol within the calculation, i.e. mathematical operators or brackets.
+ * A symbol within mathematical expressions, capable of being mathematical operators or brackets.
+ * The symbol has a relevant descriptor, returned by toString.
  * 
  * @author zlac318
  */
