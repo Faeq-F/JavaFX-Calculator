@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * The Stack class represents a last-in-first-out (LIFO) stack data-structure holding entries. The
  * usual push and pop operations are provided, as well as a method to return the top entry on the
- * stack, a method to get the number of entries in the stack. When a stack is first created, it
+ * stack and a method to get the number of entries in the stack. When a stack is first created, it
  * contains no items.
  * 
  * @author zlac318
