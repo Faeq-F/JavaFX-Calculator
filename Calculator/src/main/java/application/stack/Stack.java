@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A stack data-structure holding entries.
+ * The Stack class represents a last-in-first-out (LIFO) stack data-structure holding entries. The
+ * usual push and pop operations are provided, as well as a method to return the top entry on the
+ * stack and a method to get the number of entries in the stack. When a stack is first created, it
+ * contains no items.
  * 
  * @author zlac318
  */
@@ -16,28 +19,29 @@ public class Stack {
   private int size;
 
   /**
-   * Constructs the stack using an ArrayList.
+   * Creates an empty Stack.
    */
   public Stack() {
     entries = new ArrayList<Entry>();
     size = 0;
   }
-  
+
   /**
-   * Adds an entry to the top of the stack.
+   * Pushes an entry onto the top of this stack.
    * 
-   * @param entry to add
+   * @param entry the entry to be pushed onto this stack.
    */
   public void push(Entry entry) {
     entries.add(entry);
     size++;
   }
-  
+
   /**
-   * Provides the top item in the stack after removing it.
+   * Removes the entry at the top of this stack and returns that entry as the value of this
+   * function.
    * 
-   * @return the top item in the stack
-   * @throws EmptyStack when the stack has no items
+   * @return The entry at the top of this stack.
+   * @throws EmptyStack if this stack is empty.
    */
   public Entry pop() throws EmptyStack {
     if (size == 0) {
@@ -47,13 +51,13 @@ public class Stack {
       return entries.remove(size);
     }
   }
-  
+
 
   /**
-   * Provides the top item in the stack, without removing it.
+   * Looks at the entry at the top of this stack without removing it from the stack.
    * 
-   * @return the top item in the stack
-   * @throws EmptyStack when the stack has no items
+   * @return the entry at the top of this stack.
+   * @throws EmptyStack if this stack is empty.
    */
   public Entry top() throws EmptyStack {
     if (size == 0) {
