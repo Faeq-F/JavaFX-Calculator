@@ -3,7 +3,9 @@ package application.stack.assembly;
 import java.util.Objects;
 
 /**
- * A number, symbol or string on a stack.
+ * A stack entry capable of holding either a number, symbol or string. The relevant constructors are
+ * provided, with IllegalArgumentException being thrown when Symbol.INVALID is stored. The getter
+ * methods for the three different types capable of being stored are provided.
  * 
  * @author zlac318
  */
@@ -16,9 +18,9 @@ public class Entry {
   private Type type;
 
   /**
-   * Constructs the entry with a float number.
+   * Creates an entry with the provided value.
    * 
-   * @param value to store
+   * @param value The value to store.
    */
   public Entry(float value) {
     // casting null to float will result in NullPointerException, no need to check for it ourselves
@@ -27,10 +29,10 @@ public class Entry {
   }
 
   /**
-   * Constructs the entry with a Symbol. If the Symbol is Symbol.INVALID, the entry's type will be
-   * Type.INVALID.
+   * Creates an entry with the provided symbol. If Symbol.INVALID is provided, the entry's type will
+   * be Type.INVALID, and IllegalArgumentException is thrown.
    * 
-   * @param which symbol to store
+   * @param which The symbol to store.
    */
   public Entry(Symbol which) {
     if (which == null) {
@@ -48,9 +50,9 @@ public class Entry {
   }
 
   /**
-   * Constructs the entry with a String.
+   * Creates an entry with the provided string.
    * 
-   * @param string to store
+   * @param string The string to store.
    */
   public Entry(String string) {
     if (string == null) {
@@ -101,10 +103,10 @@ public class Entry {
   }
 
   /**
-   * Provides the string held.
+   * Returns the value held in this entry.
    * 
-   * @return string that is held
-   * @throws BadType when the entry does not hold a string
+   * @return string The value that is held in this entry.
+   * @throws BadType When this entry does not hold a string value.
    */
   public String getString() throws BadType {
     if (type == Type.STRING) {
@@ -115,10 +117,10 @@ public class Entry {
   }
 
   /**
-   * Provides the symbol held.
+   * Returns the value held in this entry.
    * 
-   * @return symbol that is held
-   * @throws BadType when the entry does not hold a Symbol
+   * @return symbol The value that is held in this entry.
+   * @throws BadType When this entry does not hold a symbol value.
    */
   public Symbol getSymbol() throws BadType {
     if (type == Type.SYMBOL) {
@@ -129,10 +131,10 @@ public class Entry {
   }
 
   /**
-   * Provides the number held.
+   * Returns the value held in this entry.
    * 
-   * @return number that is held
-   * @throws BadType when the entry does not hold a number
+   * @return number The value that is held in this entry.
+   * @throws BadType When this entry does not hold a floating-point value.
    */
   public float getValue() throws BadType {
     if (type == Type.NUMBER) {
