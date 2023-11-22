@@ -1,7 +1,7 @@
 package application.stack.assembly;
 
 /**
- * The type of data held by the Entry.
+ * The type of a value held by an entry. The types have relevant descriptors, returned by toString.
  * 
  * @author zlac318
  */
