@@ -42,7 +42,7 @@ public class NumStack {
       System.out.println(
           "\n\nYou have done something horribly wrong!\nThis is not meant to ever happen;\n\n");
       exception.printStackTrace();
-      return Float.MAX_VALUE;
+      return Float.NaN;
     }
   }
 
@@ -59,7 +59,7 @@ public class NumStack {
       System.out.println(
           "\n\nYou have done something horribly wrong!\nThis is not meant to ever happen;\n\n");
       exception.printStackTrace();
-      return Float.MAX_VALUE;
+      return Float.NaN;
     }
   }
 

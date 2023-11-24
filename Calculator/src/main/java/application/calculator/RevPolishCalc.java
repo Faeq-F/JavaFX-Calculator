@@ -1,11 +1,9 @@
 package application.calculator;
 
 import application.stack.NumStack;
-import application.stack.assembly.BadType;
-import application.stack.assembly.EmptyStack;
 
 /**
- * Evaluates a String as a Reverse Polish (postfix) expression.
+ * Evaluates a String as an expression in Reverse Polish (postfix) notation.
  *
  * @author zlac318
  */
@@ -18,44 +16,42 @@ public class RevPolishCalc {
   }
 
   /**
-   * Evaluates a String as a Reverse Polish (postfix) expression.
+   * Evaluates a String as an expression in Reverse Polish (postfix) notation.
    * 
-   * @param expr The expression to evaluate
-   * @return The number the expression evaluates to
-   * @throws InvalidExpression when the expression cannot be calculated
+   * @param expr The expression to evaluate.
+   * @return The value the expression evaluates to.
+   * @throws InvalidExpression When the expression cannot be calculated.
    */
   public float evaluate(String expr) throws InvalidExpression {
     String[] expression = expr.split(" ");
     try {
       for (String section : expression) {
-        if (section.equals("+")) {
-          numStack.push(numStack.pop() + numStack.pop());
-        } else if (section.equals("-")) {
-          float firstNum = numStack.pop();
-          float secondNum = numStack.pop();
-          float result = secondNum - firstNum;
-          numStack.push(result);
-        } else if (section.equals("*")) {
-          numStack.push(numStack.pop() * numStack.pop());
-        } else if (section.equals("/")) {
-          float firstNum = numStack.pop();
-          float secondNum = numStack.pop();
-          float result = secondNum / firstNum;
-          numStack.push(result);
-        } else { // The section is a number
-          if (section != "") {
-            numStack.push(Float.parseFloat(section));
-          }
+        switch (section) {
+          case "+":
+            numStack.push(numStack.pop() + numStack.pop());
+            break;
+          case "*":
+            numStack.push(numStack.pop() * numStack.pop());
+            break;
+          case "-":
+            float secondOp = numStack.pop();
+            numStack.push(numStack.pop() - secondOp);
+            break;
+          case "/":
+            secondOp = numStack.pop();
+            numStack.push(numStack.pop() / secondOp);
+            break;
+          default: // The section is a number
+            if (section != "") {
+              numStack.push(Float.parseFloat(section));
+            }
         }
       }
-    } catch (Exception e) {
-      throw new InvalidExpression();
-    }
-    if (numStack.size() > 1) {
-      throw new InvalidExpression();
-    }
-    try {
-      return numStack.pop();
+      if (numStack.size() > 1) {
+        throw new InvalidExpression();
+      } else {
+        return numStack.pop();
+      }
     } catch (Exception e) {
       throw new InvalidExpression();
     }
