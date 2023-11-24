@@ -1,7 +1,7 @@
 package application.calculator;
 
 /**
- * Signals that the provided expression cannot be calculated.
+ * An expression was passed to a method that could not be evaluated.
  * 
  * @author zlac318
  */
