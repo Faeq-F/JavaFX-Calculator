@@ -3,6 +3,7 @@ package application.view;
 import application.calculator.OpType;
 import java.io.IOException;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,8 +40,10 @@ public class CalcView extends Application implements ViewInterface {
 
 
   @Override
-  public void addCalculateObserver(Runnable f) {
-    calcButton.setOnAction(event -> f.run());
+  public void addCalculateObserver(Function<String, String> evaluate) {
+    calcButton.setOnAction(
+        event -> totalField.setText(evaluate.apply(inputField.getText()).toString()));
+    inputField.getText();
   }
 
   @Override
@@ -72,7 +75,7 @@ public class CalcView extends Application implements ViewInterface {
     Scene scene = new Scene(page);
     scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     primaryStage.setScene(scene);
-    primaryStage.setTitle("MVC/Observer/fxml");
+    primaryStage.setTitle("Calculator (only postfix notation has been implemented)");
     primaryStage.show();
   }
 

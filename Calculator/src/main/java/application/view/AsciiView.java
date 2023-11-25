@@ -3,6 +3,7 @@ package application.view;
 import application.calculator.OpType;
 import java.util.Scanner;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 
 /**
@@ -63,7 +64,9 @@ public class AsciiView implements ViewInterface {
   }
 
   @Override
-  public void addCalculateObserver(Runnable f) {}
+  public void addCalculateObserver(Function<String, String> evaluate) {
+    
+  }
 
   @Override
   public void addTypeObserver(Consumer<OpType> c) {}
