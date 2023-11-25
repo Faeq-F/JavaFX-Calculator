@@ -7,7 +7,7 @@ import application.stack.NumStack;
  *
  * @author zlac318
  */
-public class RevPolishCalc {
+public class RevPolishCalc implements Calculator {
 
   private NumStack numStack;
 
