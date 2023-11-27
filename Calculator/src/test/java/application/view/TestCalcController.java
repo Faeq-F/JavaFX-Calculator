@@ -21,6 +21,7 @@ class TestCalcController {
   @Test
   // Test 85
   // Testing whether the controller can be used to evaluate a string with a single number
+  // Solution: made the CalcView use the controllers evaluate, through the observer methods
   void testSingleNumber() {
     float number = random.nextFloat();
     assertEquals(testController.handleCalculation("" + number), "" + number);

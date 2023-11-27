@@ -19,18 +19,26 @@ class TestRevPolishCalc {
     random = new Random();
   }
 
-  @Test // Test 67
+  @Test
+  // Test 67
+  // testing RevPolishCalc evaluates a single number correctly.
+  // Solution: made evaluate return the required number (faking)
   void testSingleNumber() {
     assertDoesNotThrow(() -> assertEquals(5, calc.evaluate("5")));
   }
 
-  @Test // Test 68
+  @Test
+  // Test 68
+  // testing the correct evaluation of a single random number
+  // Solution: modified evaluate to return the string parsed as a float
   void testSingleNumberAgain() {
     float randomFloat = random.nextFloat();
     assertDoesNotThrow(() -> assertEquals(randomFloat, calc.evaluate("" + randomFloat)));
   }
 
-  @Test // Test 69
+  @Test
+  // Test 69
+  // testing the correct evaluation of a single random number with spaces on either
   void testSingleNumberWithSpaces() {
     float randomFloat = random.nextFloat();
     assertDoesNotThrow(() -> assertEquals(randomFloat, calc.evaluate(" " + randomFloat)));
@@ -40,7 +48,14 @@ class TestRevPolishCalc {
     assertDoesNotThrow(() -> assertEquals(randomFloat3, calc.evaluate(" " + randomFloat3 + " ")));
   }
 
-  @Test // Test 70, 71, 72
+  @Test
+  // Test 70
+  // testing the correct evaluation of simple addition between two numbers
+  // Solution: split the given string and branch to addition when '+' is seen
+  // Test 71
+  // testing the correct evaluation of simple addition between two random numbers
+  // Test 72
+  // testing the evaluation of simple addition between two random numbers with superfluous spaces
   void testSimpleAddition() {
     assertDoesNotThrow(() -> assertEquals(6, calc.evaluate("1 5 +")));
     float randomFloat1 = random.nextFloat();
@@ -51,7 +66,13 @@ class TestRevPolishCalc {
         calc.evaluate(" " + randomFloat1 + "  " + randomFloat2 + " +    ")));
   }
 
-  @Test // Test 73, 74
+  @Test
+  // Test 73
+  // testing invalid expression with misplaced + symbol
+  // Test 74
+  // testing invalid expression with too many numbers
+  // Solution: threw invalidExpression when the stack has more than one number, at the end of
+  // calculation
   void testInvalidAddition() {
     assertThrows(InvalidExpression.class, () -> calc.evaluate("1 + 5"));
     assertThrows(InvalidExpression.class, () -> calc
@@ -61,6 +82,7 @@ class TestRevPolishCalc {
   @Test
   // Test 75
   // Subtraction between the same number
+  // Solution: wrote subtraction branch
   // Test 76
   // Subtraction between different, random numbers
   // Solution: rearrange the floats when applying - operator
@@ -119,7 +141,7 @@ class TestRevPolishCalc {
     assertDoesNotThrow(() -> assertEquals(randomFloat / randomFloat2,
         calc.evaluate(randomFloat + " " + randomFloat2 + " /")));
   }
-  
+
   @Test
   // Test 83
   // Misplaced / symbol & too many numbers
