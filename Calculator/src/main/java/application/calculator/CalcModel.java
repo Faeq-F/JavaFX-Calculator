@@ -16,6 +16,7 @@ public class CalcModel implements Calculator {
     return postfixCalc.evaluate(expression);
   }
   
+  //used for state pattern
   public void setType(boolean infix){
     
   }

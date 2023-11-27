@@ -34,10 +34,8 @@ public class CalcView extends Application implements ViewInterface {
   @FXML
   private TextField totalField;
 
-  // Methods for registering an observer and for
-  // accessing user data in the UI
+  // Methods for registering an observer and for accessing user data in the UI
   // These methods build the Observer/Observable pattern
-
 
   @Override
   public void addCalculateObserver(Function<String, String> evaluate) {
@@ -81,8 +79,8 @@ public class CalcView extends Application implements ViewInterface {
 
   // DO NOT CHANGE ANYTHING BELOW THIS COMMENT
   /////////////////////////////////////////////////////////////////////////////////
+  
   // Block for creating an instance variable for others to use.
-  //
   // Make it a JavaFX singleton. Instance is set by the javafx "initialize" method
   private static volatile CalcView instance = null;
 

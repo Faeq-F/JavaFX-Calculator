@@ -11,6 +11,7 @@ import application.stack.assembly.Entry;
  */
 public class NumStack {
 
+  // This class will be a facade of the Stack class and an adapter for the RevPolishCalc
   private Stack numStack;
 
   /**
@@ -50,7 +51,7 @@ public class NumStack {
    * Provides the top item in the stack without removing it.
    * 
    * @return the top item in the stack
-   * @throws EmptyStack when the stack has no items 
+   * @throws EmptyStack when the stack has no items
    */
   public float top() throws EmptyStack {
     try {
