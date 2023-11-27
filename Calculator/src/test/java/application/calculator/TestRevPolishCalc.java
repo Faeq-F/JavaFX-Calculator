@@ -162,8 +162,19 @@ class TestRevPolishCalc {
   @Test
   // Test 87
   // Testing expressions with decimals will be calculated correctly
+  // Test 88
+  // Testing expressions with random decimals for every operator
   void testDecimals() {
-    assertDoesNotThrow(() -> assertEquals(calc.evaluate("0.5 0.5 +"), 1));
+    float randomFloat = random.nextFloat();
+    float randomFloat2 = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(calc.evaluate(randomFloat + " " + randomFloat2 + " +"),
+        randomFloat + randomFloat2));
+    assertDoesNotThrow(() -> assertEquals(calc.evaluate(randomFloat + " " + randomFloat2 + " -"),
+        randomFloat - randomFloat2));
+    assertDoesNotThrow(() -> assertEquals(calc.evaluate(randomFloat + " " + randomFloat2 + " *"),
+        randomFloat * randomFloat2));
+    assertDoesNotThrow(() -> assertEquals(calc.evaluate(randomFloat + " " + randomFloat2 + " /"),
+        randomFloat / randomFloat2));
   }
 
 }
