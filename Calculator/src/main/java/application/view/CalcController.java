@@ -6,6 +6,8 @@ import application.calculator.InvalidExpression;
 /**
  * The controller that sits between the calculator model that does actual evaluation and the view
  * that is the part the user interfaces with.
+ * 
+ * @author zlac318
  */
 public class CalcController {
   private CalcModel model;

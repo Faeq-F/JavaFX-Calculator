@@ -11,10 +11,6 @@ public class RevPolishCalc implements Calculator {
 
   private NumStack numStack;
 
-  public RevPolishCalc() {
-    numStack = new NumStack();
-  }
-
   /**
    * Evaluates a String as an expression in Reverse Polish (postfix) notation.
    * 
@@ -23,6 +19,7 @@ public class RevPolishCalc implements Calculator {
    * @throws InvalidExpression When the expression cannot be calculated.
    */
   public float evaluate(String expr) throws InvalidExpression {
+    numStack = new NumStack();
     String[] expression = expr.split(" ");
     try {
       for (String section : expression) {

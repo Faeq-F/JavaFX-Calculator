@@ -5,7 +5,8 @@ import application.stack.assembly.EmptyStack;
 import application.stack.assembly.Entry;
 
 /**
- * A stack data-structure holding floating point numbers.
+ * A stack data-structure holding floating point numbers. The usual methods, push, pop and top, are
+ * provided. The toString method will display all values held in the stack.
  * 
  * @author zlac318
  */
@@ -15,26 +16,27 @@ public class NumStack {
   private Stack numStack;
 
   /**
-   * Constructs the stack.
+   * Creates an empty NumStack.
    */
   public NumStack() {
     numStack = new Stack();
   }
 
   /**
-   * Adds a value to the top of the stack.
+   * Pushes a value onto the top of this stack.
    * 
-   * @param value to add
+   * @param value the value to be pushed onto this stack.
    */
   public void push(float value) {
     numStack.push(new Entry(value));
   }
 
   /**
-   * Provides the top item in the stack after removing it.
+   * Removes the value at the top of this stack and returns that entry as the value of this
+   * function.
    * 
-   * @return the top item in the stack
-   * @throws EmptyStack when the stack has no items
+   * @return The value at the top of this stack.
+   * @throws EmptyStack if this stack is empty.
    */
   public float pop() throws EmptyStack {
     try {
@@ -48,10 +50,10 @@ public class NumStack {
   }
 
   /**
-   * Provides the top item in the stack without removing it.
+   * Looks at the value at the top of this stack without removing it from the stack.
    * 
-   * @return the top item in the stack
-   * @throws EmptyStack when the stack has no items
+   * @return the value at the top of this stack.
+   * @throws EmptyStack if this stack is empty.
    */
   public float top() throws EmptyStack {
     try {

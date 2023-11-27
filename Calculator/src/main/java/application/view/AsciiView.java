@@ -9,10 +9,14 @@ import java.util.function.Function;
 /**
  * Skeleton code for a terminal based calculator that reads an expression from the user and
  * evaluates it and prints out the answer.
+ * 
+ * @author zlac318
  */
 public class AsciiView implements ViewInterface {
   // The current question that the calculator must solve: entered like ?3*(5+4)
   private String question;
+  private String answer;
+  private Function<String, String> evaluator;
 
   // This method will be injected so we can ask the controller to calculate
   Runnable doCalculation = null;
@@ -30,8 +34,10 @@ public class AsciiView implements ViewInterface {
       String t = s.next();
       switch (t.toUpperCase().charAt(0)) {
         case 'C': // Ask the controller to calculate
+          System.out.println(evaluator.apply(question).toString());
           break;
         case '?': // Set current question
+          question = s.nextLine().replace("?", "");
           break;
         case 'Q':
           System.out.println("Bye");
@@ -65,7 +71,7 @@ public class AsciiView implements ViewInterface {
 
   @Override
   public void addCalculateObserver(Function<String, String> evaluate) {
-    
+    evaluator = evaluate;
   }
 
   @Override
