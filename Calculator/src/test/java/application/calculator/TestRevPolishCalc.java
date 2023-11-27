@@ -151,4 +151,11 @@ class TestRevPolishCalc {
         .evaluate(random.nextFloat() + " " + random.nextFloat() + " / " + random.nextFloat()));
   }
 
+  @Test
+  // Test 86
+  // Testing that any division by zero results in infinity
+  void testDivideByZero() {
+    assertDoesNotThrow(() -> assertEquals(calc.evaluate("1 0 /"), Float.POSITIVE_INFINITY));
+  }
+
 }
