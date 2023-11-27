@@ -155,7 +155,15 @@ class TestRevPolishCalc {
   // Test 86
   // Testing that any division by zero results in infinity
   void testDivideByZero() {
-    assertDoesNotThrow(() -> assertEquals(calc.evaluate("1 0 /"), Float.POSITIVE_INFINITY));
+    assertDoesNotThrow(
+        () -> assertEquals(calc.evaluate(random.nextFloat() + " 0 /"), Float.POSITIVE_INFINITY));
+  }
+
+  @Test
+  // Test 87
+  // Testing expressions with decimals will be calculated correctly
+  void testDecimals() {
+    assertDoesNotThrow(() -> assertEquals(calc.evaluate("0.5 0.5 +"), 1));
   }
 
 }
