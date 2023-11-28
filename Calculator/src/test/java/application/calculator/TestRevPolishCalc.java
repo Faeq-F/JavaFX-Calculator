@@ -194,8 +194,16 @@ class TestRevPolishCalc {
             + " 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"), 0.02));
 
     assertDoesNotThrow(() -> assertEquals(1420.3636,
-        calc.evaluate("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"),
-        0.002));
+        calc.evaluate("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"), 0.002));
   }
 
+  @Test
+  // Test 93, 94
+  // testing for overflow - calculator should know it is wrong
+  void testOverflow() {
+    assertThrows(InvalidExpression.class, () -> calc.evaluate(Float.MAX_VALUE + " 1 +"));
+    assertThrows(InvalidExpression.class, () -> calc.evaluate(Float.POSITIVE_INFINITY + " 1 +"));
+    assertThrows(InvalidExpression.class, () -> calc.evaluate(Float.NEGATIVE_INFINITY + " 1 -"));
+    assertThrows(InvalidExpression.class, () -> calc.evaluate(Float.MIN_VALUE + " 1 -"));
+  }
 }

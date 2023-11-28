@@ -10,6 +10,7 @@ import application.stack.NumStack;
 public class RevPolishCalc implements Calculator {
 
   private NumStack numStack;
+  // Add better InvalidExpression strings
 
   /**
    * Evaluates a String as an expression in Reverse Polish (postfix) notation.
@@ -40,7 +41,12 @@ public class RevPolishCalc implements Calculator {
             break;
           default: // The section is a number
             if (section != "") {
-              numStack.push(Float.parseFloat(section));
+              float number = Float.parseFloat(section);
+              if (number == Float.MAX_VALUE || number == Float.MIN_VALUE
+                  || number == Float.NEGATIVE_INFINITY || number == Float.POSITIVE_INFINITY) {
+                throw new InvalidExpression();
+              }
+              numStack.push(number);
             }
         }
       }
