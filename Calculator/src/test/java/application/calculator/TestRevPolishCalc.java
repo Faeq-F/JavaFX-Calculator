@@ -198,9 +198,12 @@ class TestRevPolishCalc {
   }
 
   @Test
-  // Test 93
+  // Test 93, 94
   // testing for overflow - calculator should know it is wrong
   void testOverflow() {
     assertThrows(InvalidExpression.class, () -> calc.evaluate(Float.MAX_VALUE + " 1 +"));
+    assertThrows(InvalidExpression.class, () -> calc.evaluate(Float.POSITIVE_INFINITY + " 1 +"));
+    assertThrows(InvalidExpression.class, () -> calc.evaluate(Float.NEGATIVE_INFINITY + " 1 -"));
+    assertThrows(InvalidExpression.class, () -> calc.evaluate(Float.MIN_VALUE + " 1 -"));
   }
 }
