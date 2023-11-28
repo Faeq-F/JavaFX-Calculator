@@ -4,11 +4,33 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- No changes.
+
+## [Release 2.0] - 2023-11-28
+
 ### Added
-- Reverse Polish (postfix) calculator.
+
+- Reverse Polish ([postfix]) calculator.
+
+### Fixed
+
+- Nothing.
 
 ### Changed
-- Integrated postfix calculator with GUI & CLI views.
+
+- Integrated [postfix] calculator with [GUI] & [CLI] views.
+
+### Security
+
+- No changes.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
 
 ## [Release 1.0] - 2023-11-23
 
@@ -91,6 +113,10 @@ All notable changes to this project will be documented in this file.
 
 - Nothing.
 
+[Release 2.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-2.0
+[CLI]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-cli?ref_type=heads
+[GUI]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-gui?ref_type=heads
+[postfix]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-postfixCalculator?ref_type=heads
 [release 1.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-1.0
 [graphical interface]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-gui?ref_type=heads
 [release 0.1]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-0.1
