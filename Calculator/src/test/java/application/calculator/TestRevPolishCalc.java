@@ -201,6 +201,6 @@ class TestRevPolishCalc {
   // Test 93
   // testing for overflow - calculator should know it is wrong
   void testOverflow() {
-    assertDoesNotThrow(() -> assertEquals(4.4028235E38, calc.evaluate(Float.MAX_VALUE + " 1 +")));
+    assertThrows(InvalidExpression.class, () -> calc.evaluate(Float.MAX_VALUE + " 1 +"));
   }
 }
