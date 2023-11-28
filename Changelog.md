@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
-- No changes.
+### Added
+- Reverse Polish (postfix) calculator.
+
+### Changed
+- Integrated postfix calculator with GUI & CLI views.
 
 ## [Release 1.0] - 2023-11-23
 
