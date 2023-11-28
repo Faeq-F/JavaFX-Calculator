@@ -1,5 +1,6 @@
 package application;
 
+import application.stack.NumStack;
 import application.stack.Stack;
 import application.stack.assembly.Entry;
 import application.stack.assembly.Symbol;
@@ -13,6 +14,14 @@ import java.util.Random;
 public final class Randomizer {
 
   private static Random random = new Random();
+  
+  private static int parseGivenLimit(int givenLimit) {
+    if (givenLimit == -1) {
+      return random.nextInt(10000) + 1; // +1 ensures at least 1 push is made
+    } else {
+      return givenLimit;
+    }
+  }
 
   /**
    * Pushes a random number of random entries to the given stack, if a limit is not given.
@@ -24,17 +33,31 @@ public final class Randomizer {
    *         pushed in this method were in it.
    */
   public static String pushRandomItems(Stack stack, int givenLimit) {
-    int limit;
-    if (givenLimit == -1) {
-      limit = random.nextInt(10000) + 1; // +1 ensures at least 1 push is made
-    } else {
-      limit = givenLimit;
-    }
+    int limit = parseGivenLimit(givenLimit);
     String output = "The stack currently contains the following entries:\n";
     for (int number = 0; number < limit; number++) {
       Entry randomEntry = Randomizer.newRandomEntry();
       stack.push(randomEntry);
       output += randomEntry.toString() + "\n";
+    }
+    return output;
+  }
+  
+  /**
+   * Pushes a random number of random floats to the given NumStack, if a limit is not given.
+   * 
+   * @param numstack to push 
+   * @param givenLimit number of floats to push. If -1, a random amount of floats is pushed.
+   * @return a string representing what a stack's toString method should return if only the entries
+   *         pushed in this method were in it.
+   */
+  public static String pushRandomFloats(NumStack numstack, int givenLimit) {
+    int limit = parseGivenLimit(givenLimit);
+    String output = "The NumStack currently contains the following floats:\n";
+    for (int number = 0; number < limit; number++) {
+      float randomFloat = random.nextFloat();
+      numstack.push(randomFloat);
+      output += randomFloat + "\n";
     }
     return output;
   }

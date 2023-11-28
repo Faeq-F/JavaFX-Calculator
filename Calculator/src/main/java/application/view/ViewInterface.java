@@ -1,28 +1,25 @@
 package application.view;
 
-// You can use this file in your second assignment as is - or modify it to suit your code - in which
-// case add another @author tag below mine
-// DO NOT remove my @author tag
-
 import application.calculator.OpType;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * Any calculator view must implement these methods to allow the controller and the view to properly
  * work together.
  * 
  * @author Dave Cohen (d.cohen@rhul.ac.uk)
- * 
+ * @author zlac318
  **/
 public interface ViewInterface {
 
   /**
-   * Add the method that should do the calculation.
+   * Add the method that should do the calculation. The evaluate parameter has to take a parameter
+   * and return the result.
    * 
-   * @param f the runnable object to do the calculation (a method that takes no parameters and
-   *        returns no value)
+   * @param evaluate The method to do the calculation.
    */
-  void addCalculateObserver(Runnable f);
+  void addCalculateObserver(Function<String, String> evaluate);
 
   /**
    * Add the method to tell the controller the type of calculation to do.
