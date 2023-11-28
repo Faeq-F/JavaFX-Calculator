@@ -8,9 +8,10 @@ package application.calculator;
 public class InvalidExpression extends Exception {
 
   private static final long serialVersionUID = 8820694079512995768L; // auto-generated
-  
+
   public InvalidExpression() {
-    super("The expression is invalid");
+    super("The expression is invalid; please check the format of the expression."
+        + "\nThe resulting value may be too large or too small.");
   }
 
 }

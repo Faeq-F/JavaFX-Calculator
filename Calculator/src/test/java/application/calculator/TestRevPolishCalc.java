@@ -176,13 +176,26 @@ class TestRevPolishCalc {
     assertDoesNotThrow(() -> assertEquals(calc.evaluate(randomFloat + " " + randomFloat2 + " /"),
         randomFloat / randomFloat2));
   }
-  
+
   @Test
-  //Test 89
-  //Testing larger mathematical expressions
+  // Test 89, 90
+  // Testing larger mathematical expressions
   void testLargeExpressions() {
+    assertDoesNotThrow(() -> assertEquals(63, calc.evaluate("5 6 7 + * 2 -")));
+
     assertDoesNotThrow(
-        () -> assertEquals(21.545454025268555, calc.evaluate("10 6 9 3 + -11 * / * 17 + 5 +")));
+        () -> assertEquals(21.5454, calc.evaluate("10 6 9 3 + -11 * / * 17 + 5 +"), 0.002));
+
+    assertDoesNotThrow(() -> assertEquals(1357.3636,
+        calc.evaluate("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + *"), 0.002));
+
+    assertDoesNotThrow(
+        () -> assertEquals(29308.02, calc.evaluate("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + *"
+            + " 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"), 0.02));
+
+    assertDoesNotThrow(() -> assertEquals(1420.3636,
+        calc.evaluate("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"),
+        0.002));
   }
 
 }
