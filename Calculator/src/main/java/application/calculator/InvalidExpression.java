@@ -11,7 +11,7 @@ public class InvalidExpression extends Exception {
 
   public InvalidExpression() {
     super("The expression is invalid; please check the format of the expression."
-        + "\nThe resulting value may be too large or too small.");
+        + " The resulting value may be too large or too small.");
   }
 
 }
