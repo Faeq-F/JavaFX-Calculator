@@ -3,20 +3,17 @@ package application.view;
 import application.calculator.OpType;
 import java.util.Scanner;
 import java.util.function.Consumer;
-import java.util.function.Function;
-
 
 /**
- * Skeleton code for a terminal based calculator that reads an expression from the user and
- * evaluates it and prints out the answer.
+ * View for a terminal based calculator that reads an expression from the user and evaluates it and
+ * prints out the answer. Expressions must be entered like ? 3 * ( 5 + 4 )
  * 
  * @author zlac318
  */
 public class AsciiView implements ViewInterface {
-  // The current question that the calculator must solve: entered like ?3*(5+4)
+
+  // The current question that the calculator must solve: entered like ? 3 * ( 5 + 4 )
   private String question;
-  private String answer;
-  private Function<String, String> evaluator;
 
   // This method will be injected so we can ask the controller to calculate
   Runnable doCalculation = null;
@@ -24,20 +21,19 @@ public class AsciiView implements ViewInterface {
   // This method changes how the calculator will evaluate the question
   Consumer<OpType> setCalculatorType = null;
 
-
   private void menu() {
     Scanner s = new Scanner(System.in);
     boolean finished = false;
     help();
-
     while (!finished && s.hasNext()) {
       String t = s.next();
       switch (t.toUpperCase().charAt(0)) {
         case 'C': // Ask the controller to calculate
-          System.out.println(evaluator.apply(question).toString());
+          doCalculation.run();
           break;
         case '?': // Set current question
-          question = s.nextLine().replace("?", "");
+          question = s.nextLine();
+          System.out.println(question);
           break;
         case 'Q':
           System.out.println("Bye");
@@ -52,7 +48,7 @@ public class AsciiView implements ViewInterface {
 
   private void help() {
     System.out.println("Use one of the following:");
-    System.out.println("  ?Expression - to set expression");
+    System.out.println("  ? Expression - to set expression");
     System.out.println("  C - to calculate");
     System.out.println("  S - change to a standard calculator");
     System.out.println("  R - change to a reverse polish calculator");
@@ -61,16 +57,18 @@ public class AsciiView implements ViewInterface {
 
   @Override
   public String getExpression() {
-    return "0";
+    return question;
   }
 
   @Override
   public void setAnswer(String answer) {
-    System.out.println("Answer is just around the corner");
+    System.out.println(answer);
   }
 
   @Override
-  public void addTypeObserver(Consumer<OpType> c) {}
+  public void addTypeObserver(Consumer<OpType> c) {
+
+  }
 
   @Override
   public void startView() {
@@ -79,7 +77,7 @@ public class AsciiView implements ViewInterface {
 
   @Override
   public void addCalculateObserver(Runnable function) {
-    //evaluator = evaluate
+    doCalculation = function;
   }
 
 }
