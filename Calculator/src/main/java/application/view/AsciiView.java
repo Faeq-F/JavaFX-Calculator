@@ -33,7 +33,6 @@ public class AsciiView implements ViewInterface {
           break;
         case '?': // Set current question
           question = s.nextLine();
-          System.out.println(question);
           break;
         case 'Q':
           System.out.println("Bye");
