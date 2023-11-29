@@ -14,12 +14,12 @@ import java.util.function.Function;
 public interface ViewInterface {
 
   /**
-   * Add the method that should do the calculation. The evaluate parameter has to take a parameter
-   * and return the result.
+   * Add the method that should do the calculation.
    * 
-   * @param evaluate The method to do the calculation.
+   * @param function The runnable object to do the calculation (a method that takes no parameters
+   *        and returns no value)
    */
-  void addCalculateObserver(Function<String, String> evaluate);
+  void addCalculateObserver(Runnable function);
 
   /**
    * Add the method to tell the controller the type of calculation to do.

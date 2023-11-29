@@ -70,16 +70,16 @@ public class AsciiView implements ViewInterface {
   }
 
   @Override
-  public void addCalculateObserver(Function<String, String> evaluate) {
-    evaluator = evaluate;
-  }
-
-  @Override
   public void addTypeObserver(Consumer<OpType> c) {}
 
   @Override
   public void startView() {
     menu();
+  }
+
+  @Override
+  public void addCalculateObserver(Runnable function) {
+    //evaluator = evaluate
   }
 
 }
