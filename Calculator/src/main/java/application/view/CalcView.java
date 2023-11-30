@@ -3,7 +3,6 @@ package application.view;
 import application.calculator.OpType;
 import java.io.IOException;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,10 +39,8 @@ public class CalcView extends Application implements ViewInterface {
   // These methods build the Observer/Observable pattern
 
   @Override
-  public void addCalculateObserver(Function<String, String> evaluate) {
-    calcButton.setOnAction(
-        event -> totalField.setText(evaluate.apply(inputField.getText()).toString()));
-    inputField.getText();
+  public void addCalculateObserver(Runnable function) {
+    calcButton.setOnAction(event -> function.run());
   }
 
   @Override
@@ -79,11 +76,10 @@ public class CalcView extends Application implements ViewInterface {
     primaryStage.show();
   }
 
-  // DO NOT CHANGE ANYTHING BELOW THIS COMMENT
-  /////////////////////////////////////////////////////////////////////////////////
-  
+  /////////////////////////////////////////////////////////////////////////////////  
   // Block for creating an instance variable for others to use.
   // Make it a JavaFX singleton. Instance is set by the javafx "initialize" method
+  
   private static volatile CalcView instance = null;
 
   @FXML

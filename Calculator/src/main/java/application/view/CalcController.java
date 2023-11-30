@@ -14,17 +14,14 @@ public class CalcController {
   private ViewInterface view;
 
   /**
-   * Get the Model to calculate in the expression passed in, and return the result of the
-   * calculation.
-   * 
-   * @param expr The expression like "5 7 +"
-   * @return The result of the calculation.
+   * Get the Model to calculate the expression from the view, and set the result of the
+   * calculation in the relevant place, in the view.
    */
-  public String handleCalculation(String expr) { // could make a mock class to keep these private
+  public void handleCalculation() { // could make a mock class to keep these private
     try {
-      return "" + model.evaluate(expr);
+      view.setAnswer("" + model.evaluate(view.getExpression()));
     } catch (InvalidExpression e) {
-      return e.getMessage();
+      view.setAnswer(e.getMessage());
     }
   }
 
