@@ -15,11 +15,11 @@ public class ViewFactory {
   public ViewInterface create(String type) {
     switch (type) {
       case "CLI":
-        return new AsciiView();
+        return AsciiView.getInstance();
       case "GUI":
         return CalcView.getInstance();
       default:
-        return System.console() == null ? CalcView.getInstance() : new AsciiView();
+        return System.console() == null ? CalcView.getInstance() : AsciiView.getInstance();
     }
   }
 }

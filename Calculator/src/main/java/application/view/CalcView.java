@@ -76,11 +76,10 @@ public class CalcView extends Application implements ViewInterface {
     primaryStage.show();
   }
 
-  // DO NOT CHANGE ANYTHING BELOW THIS COMMENT
-  /////////////////////////////////////////////////////////////////////////////////
-  
+  /////////////////////////////////////////////////////////////////////////////////  
   // Block for creating an instance variable for others to use.
   // Make it a JavaFX singleton. Instance is set by the javafx "initialize" method
+  
   private static volatile CalcView instance = null;
 
   @FXML

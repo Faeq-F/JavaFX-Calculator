@@ -16,10 +16,10 @@ public class AsciiView implements ViewInterface {
   private String question;
 
   // This method will be injected so we can ask the controller to calculate
-  Runnable doCalculation = null;
+  Runnable doCalculation;
 
   // This method changes how the calculator will evaluate the question
-  Consumer<OpType> setCalculatorType = null;
+  Consumer<OpType> setCalculatorType;
 
   private void menu() {
     Scanner s = new Scanner(System.in);
@@ -78,5 +78,33 @@ public class AsciiView implements ViewInterface {
   public void addCalculateObserver(Runnable function) {
     doCalculation = function;
   }
+  
+  /////////////////////////////////////////////////////////////////////////////////  
+  // Block for creating an instance variable for others to use - singleton.
+  
+  /**
+   * A private constructor for the singleton View. Constructs the view.
+   */
+  private AsciiView() {
+    doCalculation = null;
+    setCalculatorType = null; 
+  }
+  
+  private static volatile AsciiView instance = new AsciiView();
+
+  /**
+   * This is a Singleton View made available through this method.
+   * 
+   * @return the single object representing this view
+   */
+  public static synchronized AsciiView getInstance() {
+    if (instance == null) {
+      instance = new AsciiView(); 
+    }
+    return instance;
+  }
+  // End of special block
+  /////////////////////////////////////////////////////////////////////////////////
+
 
 }
