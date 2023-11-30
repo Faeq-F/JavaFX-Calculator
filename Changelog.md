@@ -6,6 +6,32 @@ All notable changes to this project will be documented in this file.
 
 - No changes.
 
+## [Release 2.1] - 2023-11-30
+
+### Added
+
+- Factory for views.
+
+### Fixed
+
+- Implementation of observer methods.
+
+### Changed
+
+- Made AsciiView ([CLI]) a singleton.
+
+### Security
+
+- No changes.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
 ## [Release 2.0] - 2023-11-28
 
 ### Added
@@ -37,7 +63,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Interfaces for user interactions with the calculator.
-    - AsciiView - interactions through the command line interface.
+    - AsciiView - interactions through the [command line interface].
     - CalcView - interactions through the [graphical interface].
 
 ### Fixed
@@ -113,6 +139,8 @@ All notable changes to this project will be documented in this file.
 
 - Nothing.
 
+[Release 2.1]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-2.1
+[command line interface]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-cli?ref_type=heads
 [Release 2.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-2.0
 [CLI]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-cli?ref_type=heads
 [GUI]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-gui?ref_type=heads
