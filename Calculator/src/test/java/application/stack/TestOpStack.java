@@ -2,27 +2,37 @@ package application.stack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import application.stack.assembly.Symbol;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestOpStack {
-  
-  private OpStack numStack;
+
+  private OpStack opStack;
   private Random random;
 
   @BeforeEach
   void setUp() {
-    numStack = new OpStack();
+    opStack = new OpStack();
     random = new Random();
   }
 
   @Test
   // Test 98
   // Testing size is 0 when stack is constructed
-  // Solution: made NumStack.size() delegate responsibility to Stack.size()
+  // Solution: made OpStack.size() delegate responsibility to Stack.size()
   void testSizeEmpty() {
-    assertEquals(numStack.size(), 0);
+    assertEquals(opStack.size(), 0);
+  }
+
+  @Test
+  // Test 102
+  // Testing OpStack.push adds an item (through size being 1)
+  // Solution: made push delegate to Stack.push() with a new Entry with the symbol passed in
+  void testPushingItems() {
+    opStack.push(Symbol.PLUS);
+    assertEquals(opStack.size(), 1);
   }
 
 }
