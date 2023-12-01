@@ -18,7 +18,7 @@ public class TestOpStack {
   }
 
   @Test
-  // Test 52
+  // Test 98
   // Testing size is 0 when stack is constructed
   // Solution: made NumStack.size() delegate responsibility to Stack.size()
   void testSizeEmpty() {
