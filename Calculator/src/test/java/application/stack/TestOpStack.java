@@ -57,7 +57,7 @@ public class TestOpStack {
   // Testing OpStack.pop removes the correct item
   // Solution: made OpStack.pop() delegate responsibility to Stack.pop()
   // Test 109
-  // Testing OpStack.pop rightly throws EmptyStack.
+  // Testing OpStack.pop rightly throws EmptyStack
   void testPoppingItems() {
     assertThrows(EmptyStack.class, () -> {
       opStack.pop();
@@ -70,7 +70,12 @@ public class TestOpStack {
   // Test 104
   // Testing OpStack.top shows the correct last item
   // Solution: made OpStack.top() delegate responsibility to Stack.top()
+  // Test 110
+  // Testing OpStack.top rightly throws EmptyStack
   void testTop() {
+    assertThrows(EmptyStack.class, () -> {
+      opStack.top();
+    });
     Symbol randomSymbol = Randomizer.generateRandomSymbol();
     opStack.push(randomSymbol);
     assertDoesNotThrow(() -> assertEquals(randomSymbol, opStack.top()));
