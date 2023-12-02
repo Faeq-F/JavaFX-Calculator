@@ -1,5 +1,6 @@
 package application.stack;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import application.stack.assembly.Symbol;
@@ -33,6 +34,15 @@ public class TestOpStack {
   void testPushingItems() {
     opStack.push(Symbol.PLUS);
     assertEquals(opStack.size(), 1);
+  }
+
+  @Test
+  // Test 103
+  // Testing OpStack.pop removes the correct item
+  // Solution: made OpStack.pop() delegate responsibility to Stack.pop()
+  void testPoppingItems() {
+    opStack.push(Symbol.PLUS);
+    assertDoesNotThrow(() -> assertEquals(opStack.pop(), Symbol.PLUS));
   }
 
 }
