@@ -67,6 +67,17 @@ public class TestOpStack {
   }
 
   @Test
+  // Test 111
+  // Testing size changes with OpStack.pop
+  void testSizeWithPop() {
+    Randomizer.pushRandomSymbols(opStack, 3);
+    opStack.push(Randomizer.generateRandomSymbol());
+    assertEquals(opStack.size(), 4);
+    assertDoesNotThrow(() -> opStack.pop());
+    assertEquals(opStack.size(), 3);
+  }
+
+  @Test
   // Test 104
   // Testing OpStack.top shows the correct last item
   // Solution: made OpStack.top() delegate responsibility to Stack.top()
