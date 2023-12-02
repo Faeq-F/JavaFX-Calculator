@@ -32,9 +32,13 @@ public class TestOpStack {
   // Test 102
   // Testing OpStack.push adds an item (through size being 1)
   // Solution: made push delegate to Stack.push() with a new Entry with the symbol passed in
+  // Test 106
+  // Testing OpStack.push adds an item (through OpStack.top)
   void testPushingItems() {
-    opStack.push(Symbol.PLUS);
+    Symbol randomSymbol = Randomizer.generateRandomSymbol();
+    opStack.push(randomSymbol);
     assertEquals(opStack.size(), 1);
+    assertDoesNotThrow(() -> assertEquals(opStack.top(), randomSymbol));
   }
 
   @Test
