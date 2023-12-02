@@ -2,6 +2,7 @@ package application.stack;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import application.Randomizer;
 import application.stack.assembly.Symbol;
 import java.util.Random;
@@ -53,6 +54,14 @@ public class TestOpStack {
     Symbol randomSymbol = Randomizer.generateRandomSymbol();
     opStack.push(randomSymbol);
     assertDoesNotThrow(() -> assertEquals(randomSymbol, opStack.top()));
+  }
+
+  @Test
+  // Test 105
+  // Testing OpStack.toString returns an appropriate message when OpStack is empty
+  // Solution: Implemented toString
+  void testToString() {
+    assertEquals(opStack.toString(), "The stack is currently empty");
   }
 
 }

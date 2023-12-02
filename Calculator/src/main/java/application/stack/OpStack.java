@@ -67,6 +67,10 @@ public class OpStack {
     }
   }
 
+  @Override
+  public String toString() {
+    return "The stack is currently empty";
+  }
 
   public int size() {
     return opStack.size();
