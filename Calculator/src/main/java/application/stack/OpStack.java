@@ -50,6 +50,24 @@ public class OpStack {
     }
   }
 
+  /**
+   * Looks at the operator at the top of this stack without removing it from the stack.
+   * 
+   * @return The operator at the top of this stack.
+   * @throws EmptyStack If this stack is empty.
+   */
+  public Symbol top() throws EmptyStack {
+    try {
+      return opStack.top().getSymbol();
+    } catch (BadType exception) {
+      System.out.println(
+          "\n\nYou have done something horribly wrong!\nThis is not meant to ever happen;\n\n");
+      exception.printStackTrace();
+      return Symbol.INVALID;
+    }
+  }
+
+
   public int size() {
     return opStack.size();
   }

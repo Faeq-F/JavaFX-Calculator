@@ -2,7 +2,7 @@ package application.stack;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import application.Randomizer;
 import application.stack.assembly.Symbol;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,6 +43,16 @@ public class TestOpStack {
   void testPoppingItems() {
     opStack.push(Symbol.PLUS);
     assertDoesNotThrow(() -> assertEquals(opStack.pop(), Symbol.PLUS));
+  }
+
+  @Test
+  // Test 104
+  // Testing OpStack.top shows the correct last item
+  // Solution: made OpStack.top() delegate responsibility to Stack.top()
+  void testTop() {
+    Symbol randomSymbol = Randomizer.generateRandomSymbol();
+    opStack.push(randomSymbol);
+    assertDoesNotThrow(() -> assertEquals(randomSymbol, opStack.top()));
   }
 
 }
