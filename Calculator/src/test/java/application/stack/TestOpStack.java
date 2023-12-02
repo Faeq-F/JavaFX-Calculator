@@ -29,6 +29,15 @@ public class TestOpStack {
   }
 
   @Test
+  // Test 107
+  // Testing OpStack.size with a random amount of random symbols
+  void testSize() {
+    String itemsString = Randomizer.pushRandomSymbols(opStack, -1);
+    int stackSize = itemsString.split("\n").length - 1;
+    assertEquals(stackSize, opStack.size());
+  }
+
+  @Test
   // Test 102
   // Testing OpStack.push adds an item (through size being 1)
   // Solution: made push delegate to Stack.push() with a new Entry with the symbol passed in

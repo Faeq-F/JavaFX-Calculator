@@ -1,6 +1,7 @@
 package application;
 
 import application.stack.NumStack;
+import application.stack.OpStack;
 import application.stack.Stack;
 import application.stack.assembly.Entry;
 import application.stack.assembly.Symbol;
@@ -48,7 +49,7 @@ public final class Randomizer {
    * 
    * @param numstack to push 
    * @param givenLimit number of floats to push. If -1, a random amount of floats is pushed.
-   * @return a string representing what a stack's toString method should return if only the entries
+   * @return a string representing what a stack's toString method should return if only the floats
    *         pushed in this method were in it.
    */
   public static String pushRandomFloats(NumStack numstack, int givenLimit) {
@@ -58,6 +59,25 @@ public final class Randomizer {
       float randomFloat = random.nextFloat();
       numstack.push(randomFloat);
       output += randomFloat + "\n";
+    }
+    return output;
+  }
+  
+  /**
+   * Pushes a random number of random Symbols to the given OpStack, if a limit is not given.
+   * 
+   * @param opStack to push 
+   * @param givenLimit number of Symbols to push. If -1, a random amount of Symbols is pushed.
+   * @return a string representing what a stack's toString method should return if only the Symbols
+   *         pushed in this method were in it.
+   */
+  public static String pushRandomSymbols(OpStack opStack, int givenLimit) {
+    int limit = parseGivenLimit(givenLimit);
+    String output = "The OpStack currently contains the following floats:\n";
+    for (int number = 0; number < limit; number++) {
+      Symbol randomSymbol = Randomizer.generateRandomSymbol();
+      opStack.push(randomSymbol);
+      output += randomSymbol + "\n";
     }
     return output;
   }
