@@ -66,10 +66,11 @@ public class OpStack {
       return Symbol.INVALID;
     }
   }
-
+  
   @Override
   public String toString() {
-    return "The stack is currently empty";
+    return opStack.toString().replace("entries", "symbols")
+        .replace("Entry holding type SYMBOL has value: ", "").replace("stack", "OpStack");
   }
 
   public int size() {

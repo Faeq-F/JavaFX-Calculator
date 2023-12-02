@@ -73,8 +73,13 @@ public class TestOpStack {
   // Test 105
   // Testing OpStack.toString returns an appropriate message when OpStack is empty
   // Solution: Implemented toString
+  // Test 108
+  // Testing OpStack.toString with a random amount of random symbols
+  // Solution: modified string from Stack.toString to show symbols
   void testToString() {
-    assertEquals(opStack.toString(), "The stack is currently empty");
+    assertEquals(opStack.toString(), "The OpStack is currently empty");
+    String itemsString = Randomizer.pushRandomSymbols(opStack, -1);
+    assertEquals(itemsString, opStack.toString());
   }
 
 }

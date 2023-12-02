@@ -73,7 +73,7 @@ public final class Randomizer {
    */
   public static String pushRandomSymbols(OpStack opStack, int givenLimit) {
     int limit = parseGivenLimit(givenLimit);
-    String output = "The OpStack currently contains the following floats:\n";
+    String output = "The OpStack currently contains the following symbols:\n";
     for (int number = 0; number < limit; number++) {
       Symbol randomSymbol = Randomizer.generateRandomSymbol();
       opStack.push(randomSymbol);
