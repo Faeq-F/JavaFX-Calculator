@@ -3,10 +3,10 @@ package application.stack;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import application.Randomizer;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import application.Randomizer;
 
 public class TestStrStack {
 
@@ -72,8 +72,13 @@ public class TestStrStack {
   // Test 120
   // Testing StrStack.toString returns an appropriate message when StrStack is empty
   // Solution: Implemented toString
+  // Test 123
+  // Testing StrStack.toString with a random amount of random strings
+  // Solution: modified string from Stack.toString to show strings
   void testToString() {
-    assertEquals(strStack.toString(), "The stack is currently empty");
+    assertEquals(strStack.toString(), "The StrStack is currently empty");
+    String itemsString = Randomizer.pushRandomStrings(strStack, -1);
+    assertEquals(itemsString, strStack.toString());
   }
 
 }

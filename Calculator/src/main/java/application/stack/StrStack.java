@@ -69,7 +69,8 @@ public class StrStack {
 
   @Override
   public String toString() {
-    return "The stack is currently empty";
+    return strStack.toString().replace("entries", "strings")
+        .replace("Entry holding type STRING has value: ", "").replace("stack", "StrStack");
   }
 
   public int size() {
