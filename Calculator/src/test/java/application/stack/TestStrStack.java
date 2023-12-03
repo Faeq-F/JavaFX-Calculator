@@ -67,12 +67,15 @@ public class TestStrStack {
   @Test
   // Test 126
   // Testing size changes with StrStack.pop
+  // Test 127
+  // Testing StrStack.pop removes the correct items (through toString)
   void testSizeWithPop() {
-    Randomizer.pushRandomStrings(strStack, 3);
+    final String itemsString = Randomizer.pushRandomStrings(strStack, 3);
     strStack.push(Randomizer.generateRandomString());
     assertEquals(strStack.size(), 4);
     assertDoesNotThrow(() -> strStack.pop());
     assertEquals(strStack.size(), 3);
+    assertEquals(itemsString, strStack.toString()); // did pop remove the correct items?
   }
 
   @Test
