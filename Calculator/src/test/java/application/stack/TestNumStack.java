@@ -104,7 +104,7 @@ class TestNumStack {
     assertThrows(EmptyStack.class, () -> {
       numStack.top();
     });
-    for (int numEntries = 0; numEntries < new Random().nextInt(10000) + 1; numEntries++) {
+    for (int numEntries = 0; numEntries < random.nextInt(10000) + 1; numEntries++) {
       float randomFloat = random.nextFloat();
       numStack.push(randomFloat);
       assertEquals(numStack.size(), numEntries + 1);

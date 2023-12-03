@@ -100,13 +100,19 @@ public class TestOpStack {
   // Solution: made OpStack.top() delegate responsibility to Stack.top()
   // Test 110
   // Testing OpStack.top rightly throws EmptyStack
+  // Test 115
+  // Tested OpStack.top does not change size with a random amount of random symbols
   void testTop() {
     assertThrows(EmptyStack.class, () -> {
       opStack.top();
     });
-    Symbol randomSymbol = Randomizer.generateRandomSymbol();
-    opStack.push(randomSymbol);
-    assertDoesNotThrow(() -> assertEquals(randomSymbol, opStack.top()));
+    for (int numEntries = 0; numEntries < random.nextInt(10000) + 1; numEntries++) {
+      Symbol randomSymbol = Randomizer.generateRandomSymbol();
+      opStack.push(randomSymbol);
+      assertEquals(opStack.size(), numEntries + 1);
+      assertDoesNotThrow(() -> assertEquals(randomSymbol, opStack.top()));
+      assertEquals(opStack.size(), numEntries + 1);
+    }
   }
 
   @Test
