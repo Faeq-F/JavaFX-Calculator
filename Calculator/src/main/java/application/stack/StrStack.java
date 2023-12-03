@@ -50,6 +50,23 @@ public class StrStack {
     }
   }
 
+  /**
+   * Looks at the string at the top of this stack without removing it from the stack.
+   * 
+   * @return The string at the top of this stack.
+   * @throws EmptyStack If this stack is empty.
+   */
+  public String top() throws EmptyStack {
+    try {
+      return strStack.top().getString();
+    } catch (BadType exception) {
+      System.out.println(
+          "\n\nYou have done something horribly wrong!\nThis is not meant to ever happen;\n\n");
+      exception.printStackTrace();
+      return Type.INVALID.toString();
+    }
+  }
+
   public int size() {
     return strStack.size();
   }

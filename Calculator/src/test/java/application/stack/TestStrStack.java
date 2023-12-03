@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import application.Randomizer;
 
 public class TestStrStack {
 
@@ -42,6 +43,16 @@ public class TestStrStack {
   void testPoppingItems() {
     strStack.push("test 118");
     assertDoesNotThrow(() -> assertEquals(strStack.pop(), "test 118"));
+  }
+
+  @Test
+  // Test 119
+  // Testing StrStack.top shows the correct last item
+  // Solution: made StrStack.top() delegate responsibility to Stack.top()
+  void testTop() {
+    String randomString = Randomizer.generateRandomString();
+    strStack.push(randomString);
+    assertDoesNotThrow(() -> assertEquals(randomString, strStack.top()));
   }
 
 }
