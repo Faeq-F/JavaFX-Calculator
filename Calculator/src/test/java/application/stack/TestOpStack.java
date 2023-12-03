@@ -76,6 +76,8 @@ public class TestOpStack {
   // Testing size changes with OpStack.pop
   // Test 112
   // Testing OpStack.pop removes the correct items (through toString)
+  // Test 114
+  // Testing size goes back to 0 with OpStack.pop
   void testSizeWithPop() {
     final String itemsString = Randomizer.pushRandomSymbols(opStack, 3);
     opStack.push(Randomizer.generateRandomSymbol());
@@ -83,6 +85,13 @@ public class TestOpStack {
     assertDoesNotThrow(() -> opStack.pop());
     assertEquals(opStack.size(), 3);
     assertEquals(itemsString, opStack.toString()); // did pop remove the correct items?
+    for (int itemsLeft = 3; itemsLeft > 0; itemsLeft--) {
+      assertDoesNotThrow(() -> opStack.pop());
+      assertEquals(opStack.size(), itemsLeft - 1);
+    }
+    assertThrows(EmptyStack.class, () -> {
+      opStack.pop();
+    });
   }
 
   @Test
