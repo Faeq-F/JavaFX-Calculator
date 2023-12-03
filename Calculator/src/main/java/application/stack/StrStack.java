@@ -67,6 +67,11 @@ public class StrStack {
     }
   }
 
+  @Override
+  public String toString() {
+    return "The stack is currently empty";
+  }
+
   public int size() {
     return strStack.size();
   }

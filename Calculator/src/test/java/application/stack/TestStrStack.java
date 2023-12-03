@@ -55,4 +55,12 @@ public class TestStrStack {
     assertDoesNotThrow(() -> assertEquals(randomString, strStack.top()));
   }
 
+  @Test
+  // Test 120
+  // Testing StrStack.toString returns an appropriate message when StrStack is empty
+  // Solution: Implemented toString
+  void testToString() {
+    assertEquals(strStack.toString(), "The stack is currently empty");
+  }
+
 }
