@@ -68,7 +68,12 @@ public class TestStrStack {
   // Test 119
   // Testing StrStack.top shows the correct last item
   // Solution: made StrStack.top() delegate responsibility to Stack.top()
+  // Test 125
+  // Testing StrStack.top rightly throws EmptyStack
   void testTop() {
+    assertThrows(EmptyStack.class, () -> {
+      strStack.top();
+    });
     String randomString = Randomizer.generateRandomString();
     strStack.push(randomString);
     assertDoesNotThrow(() -> assertEquals(randomString, strStack.top()));
