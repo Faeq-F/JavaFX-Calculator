@@ -28,6 +28,15 @@ public class TestStrStack {
   }
 
   @Test
+  // Test 122
+  // Testing StrStack.size with a random amount of random strings
+  void testSize() {
+    String itemsString = Randomizer.pushRandomStrings(strStack, -1);
+    int stackSize = itemsString.split("\n").length - 1;
+    assertEquals(stackSize, strStack.size());
+  }
+
+  @Test
   // Test 117
   // Testing StrStack.push adds an item (through size being 1)
   // Solution: made push delegate to Stack.push() with a new Entry with the string passed in
