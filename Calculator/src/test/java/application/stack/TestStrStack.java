@@ -31,9 +31,13 @@ public class TestStrStack {
   // Test 117
   // Testing StrStack.push adds an item (through size being 1)
   // Solution: made push delegate to Stack.push() with a new Entry with the string passed in
+  // Test 121
+  // Testing StrStack.push adds an item (through StrStack.top)
   void testPushingItems() {
-    strStack.push("test 117");
+    String randomString = Randomizer.generateRandomString();
+    strStack.push(randomString);
     assertEquals(strStack.size(), 1);
+    assertDoesNotThrow(() -> assertEquals(strStack.top(), randomString));
   }
 
   @Test
