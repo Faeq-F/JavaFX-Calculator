@@ -65,6 +65,17 @@ public class TestStrStack {
   }
 
   @Test
+  // Test 126
+  // Testing size changes with StrStack.pop
+  void testSizeWithPop() {
+    Randomizer.pushRandomStrings(strStack, 3);
+    strStack.push(Randomizer.generateRandomString());
+    assertEquals(strStack.size(), 4);
+    assertDoesNotThrow(() -> strStack.pop());
+    assertEquals(strStack.size(), 3);
+  }
+
+  @Test
   // Test 119
   // Testing StrStack.top shows the correct last item
   // Solution: made StrStack.top() delegate responsibility to Stack.top()
