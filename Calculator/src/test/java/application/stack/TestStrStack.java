@@ -2,8 +2,9 @@ package application.stack;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import application.Randomizer;
+import application.stack.assembly.EmptyStack;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,7 +54,12 @@ public class TestStrStack {
   // Test 118
   // Testing StrStack.pop removes the correct item
   // Solution: made StrStack.pop() delegate responsibility to Stack.pop()
+  // Test 124
+  // Testing StrStack.pop rightly throws EmptyStack
   void testPoppingItems() {
+    assertThrows(EmptyStack.class, () -> {
+      strStack.pop();
+    });
     strStack.push("test 118");
     assertDoesNotThrow(() -> assertEquals(strStack.pop(), "test 118"));
   }
