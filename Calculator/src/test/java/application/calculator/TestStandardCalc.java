@@ -2,6 +2,7 @@ package application.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,13 +47,13 @@ class TestStandardCalc {
         calc.evaluate(randomFloat1 + " + " + randomFloat2)));
   }
 
-  // @Test
-  // Test 135 - Removed to pass pipeline tests - will add later
+  @Test
+  // Test 135
   // Testing invalid expression with misplaced + symbol
-  /*
-   * void testInvalidAddition() { assertThrows(InvalidExpression.class, () ->
-   * calc.evaluate("1 5 +")); }
-   */
+  void testInvalidAddition() {
+    assertThrows(InvalidExpression.class, () -> calc.evaluate("1 5 +"));
+  }
+
 
   @Test
   // Test 136
@@ -129,9 +130,10 @@ class TestStandardCalc {
   @Test
   // Test 146
   // Testing expressions with different operators but no brackets
+  // Solution: create getOperationOrder and use it to place the operators in the postfixExpr in the
+  // correct order, based on priority
   void testMultipleOperatorsNoBrackets() {
-    assertDoesNotThrow(
-        () -> assertEquals(-0.2, calc.evaluate("5 + 2 / 5 * 7 - 8"), 0.02));
+    assertDoesNotThrow(() -> assertEquals(-0.2, calc.evaluate("5 + 2 / 5 * 7 - 8"), 0.02));
   }
 
 }

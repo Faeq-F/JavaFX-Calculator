@@ -25,58 +25,66 @@ public class StandardCalc implements Calculator {
    * @throws InvalidExpression When the expression cannot be calculated.
    */
   public float evaluate(String expression) throws InvalidExpression {
-    String[] expr = expression.split(" ");
-    values = new OpStack();
-    String postfixExpr = "";
-
-    // Implementation of Shunting Yard Algorithm
     try {
-      for (String section : expr) {
-        Symbol sectionAsSymbol = symbolFromString(section);
-
-        if (sectionAsSymbol == Symbol.LEFT_BRACKET) {
-          values.push(Symbol.LEFT_BRACKET);
-
-        } else if (sectionAsSymbol == Symbol.RIGHT_BRACKET) {
-
-          while (values.top() != Symbol.LEFT_BRACKET) { // Add operators from stack until (
-            Symbol operator = values.pop();
-            postfixExpr += operator.toString().charAt(operator.toString().length() - 1) + " ";
-          }
-          values.pop();
-
-        } else if (sectionAsSymbol != Symbol.INVALID) { // It is an operator
-
-          // If it has < priority than the operator on the top of the stack
-          while (values.size() > 0 && values.top() != Symbol.LEFT_BRACKET
-              && getOperationOrder(values.top()) >= getOperationOrder(sectionAsSymbol)) {
-            // add the operator from the stack
-            Symbol operator = values.pop();
-            postfixExpr += operator.toString().charAt(operator.toString().length() - 1) + " ";
-          }
-
-          // Once the current operator has >= priority, push it to the stack
-          values.push(sectionAsSymbol);
-
-        } else { // it is a number
-          postfixExpr += section + " ";
-        }
+      try {
+        return Float.parseFloat(expression);
+      } catch(Exception exc) {
+        rpCalc.evaluate(expression);  
       }
-
-      // Add on any remaining operators on the stack (There should be no brackets left)
-      while (values.size() > 0) {
-        Symbol operator = values.pop();
-        postfixExpr += operator.toString().charAt(operator.toString().length() - 1) + " ";
-      }
-
-      return rpCalc.evaluate(postfixExpr); 
-      
     } catch (Exception e) {
-      throw new InvalidExpression();
+
+      String[] expr = expression.split(" ");
+      values = new OpStack();
+      String postfixExpr = "";
+
+      // Implementation of Shunting Yard Algorithm
+      try {
+        for (String section : expr) {
+          Symbol sectionAsSymbol = symbolFromString(section);
+
+          if (sectionAsSymbol == Symbol.LEFT_BRACKET) {
+            values.push(Symbol.LEFT_BRACKET);
+
+          } else if (sectionAsSymbol == Symbol.RIGHT_BRACKET) {
+
+            while (values.top() != Symbol.LEFT_BRACKET) { // Add operators from stack until (
+              Symbol operator = values.pop();
+              postfixExpr += operator.toString().charAt(operator.toString().length() - 1) + " ";
+            }
+            values.pop();
+
+          } else if (sectionAsSymbol != Symbol.INVALID) { // It is an operator
+
+            // If it has < priority than the operator on the top of the stack
+            while (values.size() > 0 && values.top() != Symbol.LEFT_BRACKET
+                && getOperationOrder(values.top()) >= getOperationOrder(sectionAsSymbol)) {
+              // add the operator from the stack
+              Symbol operator = values.pop();
+              postfixExpr += operator.toString().charAt(operator.toString().length() - 1) + " ";
+            }
+
+            // Once the current operator has >= priority, push it to the stack
+            values.push(sectionAsSymbol);
+
+          } else { // it is a number
+            postfixExpr += section + " ";
+          }
+        }
+
+        // Add on any remaining operators on the stack (There should be no brackets left)
+        while (values.size() > 0) {
+          Symbol operator = values.pop();
+          postfixExpr += operator.toString().charAt(operator.toString().length() - 1) + " ";
+        }
+
+        return rpCalc.evaluate(postfixExpr);
+
+      } catch (Exception ex) {
+        throw new InvalidExpression();
+      }
     }
+    throw new InvalidExpression();
   }
-
-
 
   /**
    * Provides the priority of an operation, with 2 being the highest.
