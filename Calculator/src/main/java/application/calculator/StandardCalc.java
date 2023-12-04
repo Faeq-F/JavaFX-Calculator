@@ -34,6 +34,8 @@ public class StandardCalc implements Calculator {
     for (String section : expr) {
       if (section.equals("+")) {
         values.push(Symbol.PLUS);
+      } else if (section.equals("-")) {
+        values.push(Symbol.MINUS);
       } else {
         postfixExpr += section + " ";
       }
