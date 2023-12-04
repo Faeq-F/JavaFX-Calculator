@@ -3,6 +3,7 @@ package application.stack;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import application.Randomizer;
 import application.stack.assembly.EmptyStack;
 import java.util.Random;
@@ -56,12 +57,17 @@ public class TestStrStack {
   // Solution: made StrStack.pop() delegate responsibility to Stack.pop()
   // Test 124
   // Testing StrStack.pop rightly throws EmptyStack
+  // Test 128
+  // Testing StrStack.pop removes the correct (random) item.
   void testPoppingItems() {
     assertThrows(EmptyStack.class, () -> {
       strStack.pop();
     });
     strStack.push("test 118");
     assertDoesNotThrow(() -> assertEquals(strStack.pop(), "test 118"));
+    String randomString = Randomizer.generateRandomString();
+    strStack.push(randomString);
+    assertDoesNotThrow(() -> assertEquals(strStack.pop(), randomString));
   }
 
   @Test
