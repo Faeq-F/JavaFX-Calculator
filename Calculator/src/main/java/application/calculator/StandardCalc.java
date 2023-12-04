@@ -31,20 +31,38 @@ public class StandardCalc implements Calculator {
     String[] expr = expression.split(" ");
     values = new OpStack();
     String postfixExpr = "";
+
+    // Implementation of Shunting Yard Algorithm
     for (String section : expr) {
-      if (section.equals("+")) {
-        values.push(Symbol.PLUS);
-      } else if (section.equals("-")) {
-        values.push(Symbol.MINUS);
-      } else if (section.equals("*")) {
-        values.push(Symbol.TIME);
-      } else if (section.equals("/")) {
-        values.push(Symbol.DIVIDE);
+      if (symbolFromString(section) == Symbol.PLUS || symbolFromString(section) == Symbol.MINUS
+          || symbolFromString(section) == Symbol.TIME
+          || symbolFromString(section) == Symbol.DIVIDE) {
+
+        try {
+          while (values.size() > 0 && values.top() != Symbol.LEFT_BRACKET) {
+            Symbol next = values.pop();
+            postfixExpr += next.toString().charAt(next.toString().length()) + " ";
+          }
+        } catch (Exception e) {
+          throw new InvalidExpression();
+        }
+
+        values.push(symbolFromString(section));
+
+
       } else if (section.equals("(")) {
-        continue;
+        values.push(Symbol.LEFT_BRACKET);
       } else if (section.equals(")")) {
-        continue;
-      } else {
+        try {
+          while (values.top() != Symbol.LEFT_BRACKET) {
+            Symbol next = values.pop();
+            postfixExpr += next.toString().charAt(next.toString().length() - 1) + " ";
+          }
+          values.pop();
+        } catch (Exception e) {
+          throw new InvalidExpression();
+        }
+      } else { // It is a number
         postfixExpr += section + " ";
       }
     }
@@ -57,6 +75,32 @@ public class StandardCalc implements Calculator {
       }
     }
     return rpCalc.evaluate(postfixExpr);
+  }
+
+  /**
+   * Casts a string into a Symbol.
+   * 
+   * @param symbol The symbol that needs to be cast into a string. i.e. "*", "/", etc.
+   * @return The symbol corresponding to the argument passed in. Returns Symbol.Invalid if the
+   *         argument does not match any symbol.
+   */
+  private static Symbol symbolFromString(String symbol) {
+    switch (symbol) {
+      case "+":
+        return Symbol.PLUS;
+      case "-":
+        return Symbol.MINUS;
+      case "*":
+        return Symbol.TIME;
+      case "/":
+        return Symbol.DIVIDE;
+      case "(":
+        return Symbol.LEFT_BRACKET;
+      case ")":
+        return Symbol.RIGHT_BRACKET;
+      default:
+        return Symbol.INVALID;
+    }
   }
 
 }
