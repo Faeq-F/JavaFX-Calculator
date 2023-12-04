@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import application.Randomizer;
 import application.stack.assembly.EmptyStack;
+import application.stack.assembly.Symbol;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -99,13 +100,19 @@ public class TestStrStack {
   // Solution: made StrStack.top() delegate responsibility to Stack.top()
   // Test 125
   // Testing StrStack.top rightly throws EmptyStack
+  // Test 130
+  // Tested StrStack.top does not change size with a random amount of random strings
   void testTop() {
     assertThrows(EmptyStack.class, () -> {
       strStack.top();
     });
-    String randomString = Randomizer.generateRandomString();
-    strStack.push(randomString);
-    assertDoesNotThrow(() -> assertEquals(randomString, strStack.top()));
+    for (int numEntries = 0; numEntries < random.nextInt(10000) + 1; numEntries++) {
+      String randomString = Randomizer.generateRandomString();
+      strStack.push(randomString);
+      assertEquals(strStack.size(), numEntries + 1);
+      assertDoesNotThrow(() -> assertEquals(randomString, strStack.top()));
+      assertEquals(strStack.size(), numEntries + 1);
+    }
   }
 
   @Test
