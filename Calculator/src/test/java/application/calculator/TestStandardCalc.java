@@ -57,8 +57,14 @@ class TestStandardCalc {
   // Test 136
   // Testing simple subtraction between two numbers
   // Solution: added branch for -
+  // Test 137
+  // Testing simple subtraction between two random numbers
   void testSimpleSubtraction() {
     assertDoesNotThrow(() -> assertEquals(4, calc.evaluate("5 - 1")));
+    float randomFloat1 = random.nextFloat();
+    float randomFloat2 = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(randomFloat1 - randomFloat2,
+        calc.evaluate(randomFloat1 + " - " + randomFloat2)));
   }
 
 }
