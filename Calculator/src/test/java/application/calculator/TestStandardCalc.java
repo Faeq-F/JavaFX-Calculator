@@ -21,8 +21,10 @@ class TestStandardCalc {
   @Test
   // Test 131
   // Testing StandardCalc evaluates a single number correctly
+  // Solution: made evaluate return the desired number
   // Test 132
   // Testing StandardCalc evaluates a single (random) number correctly
+  // Solution: made evaluate return the argument parsed as a float
   void testSingleNumber() {
     assertDoesNotThrow(() -> assertEquals(calc.evaluate("5"), 5));
     float randomFloat = random.nextFloat();
@@ -32,8 +34,16 @@ class TestStandardCalc {
   @Test
   // Test 133
   // Testing the correct evaluation of simple addition between two numbers
+  // Solution: Split the argument into sections and push + onto the stack when it is encountered
+  // Pop the operator off the stack after all numbers have been added to the postfix string
+  // Test 134
+  // Testing the correct evaluation of simple addition between two random numbers.
   void testSimpleAddition() {
     assertDoesNotThrow(() -> assertEquals(6, calc.evaluate("1 + 5")));
+    float randomFloat1 = random.nextFloat();
+    float randomFloat2 = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(randomFloat1 + randomFloat2,
+        calc.evaluate(randomFloat1 + " + " + randomFloat2)));
   }
 
 }
