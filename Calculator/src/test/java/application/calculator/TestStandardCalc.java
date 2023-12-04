@@ -46,7 +46,7 @@ class TestStandardCalc {
         calc.evaluate(randomFloat1 + " + " + randomFloat2)));
   }
 
-  @Test
+  //@Test
   // Test 135 - Removed to pass pipeline tests - will add later
   // Testing invalid expression with misplaced + symbol
   /*
@@ -54,6 +54,7 @@ class TestStandardCalc {
    * calc.evaluate("1 5 +")); }
    */
 
+  @Test
   // Test 136
   // Testing simple subtraction between two numbers
   // Solution: added branch for -
@@ -67,6 +68,7 @@ class TestStandardCalc {
         calc.evaluate(randomFloat1 + " - " + randomFloat2)));
   }
 
+  @Test
   // Test 138
   // Testing simple multiplication between two numbers
   // Solution: added branch for *
@@ -78,6 +80,14 @@ class TestStandardCalc {
     float randomFloat2 = random.nextFloat();
     assertDoesNotThrow(() -> assertEquals(randomFloat1 * randomFloat2,
         calc.evaluate(randomFloat1 + " * " + randomFloat2)));
+  }
+
+  @Test
+  // Test 140
+  // Testing simple division between two numbers
+  // Solution: added branch for /
+  void testSimpleDivision() {
+    assertDoesNotThrow(() -> assertEquals(2.5, calc.evaluate("5 / 2")));
   }
 
 }

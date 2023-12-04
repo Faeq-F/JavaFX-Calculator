@@ -38,6 +38,8 @@ public class StandardCalc implements Calculator {
         values.push(Symbol.MINUS);
       } else if (section.equals("*")) {
         values.push(Symbol.TIME);
+      } else if (section.equals("/")) {
+        values.push(Symbol.DIVIDE);
       } else {
         postfixExpr += section + " ";
       }
