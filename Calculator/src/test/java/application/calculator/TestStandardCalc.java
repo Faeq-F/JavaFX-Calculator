@@ -115,10 +115,8 @@ class TestStandardCalc {
   }
 
   @Test
-  // Test 144
-  // Testing expression with multiple brackets and different operators
-  // Test 145
-  // Testing same as 144
+  // Test 144, 145
+  // Testing expressions with multiple brackets and different operators
   void testMultipleBracketsAndOperators() {
     // test 144
     assertDoesNotThrow(
@@ -126,6 +124,14 @@ class TestStandardCalc {
     // test 145
     assertDoesNotThrow(
         () -> assertEquals(-1.4, calc.evaluate("( 5 + 2 ) / ( 5 * ( 7 - 8 ) )"), 0.02));
+  }
+
+  @Test
+  // Test 146
+  // Testing expressions with different operators but no brackets
+  void testMultipleOperatorsNoBrackets() {
+    assertDoesNotThrow(
+        () -> assertEquals(-0.2, calc.evaluate("5 + 2 / 5 * 7 - 8"), 0.02));
   }
 
 }

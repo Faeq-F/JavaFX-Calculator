@@ -1,7 +1,6 @@
 package application.calculator;
 
 import application.stack.OpStack;
-import application.stack.assembly.EmptyStack;
 import application.stack.assembly.Symbol;
 
 /**
@@ -18,7 +17,6 @@ public class StandardCalc implements Calculator {
     rpCalc = new RevPolishCalc();
   }
 
-
   /**
    * Evaluates a String as an expression in Standard (infix) notation.
    * 
@@ -26,55 +24,74 @@ public class StandardCalc implements Calculator {
    * @return The value the expression evaluates to.
    * @throws InvalidExpression When the expression cannot be calculated.
    */
-  @Override
   public float evaluate(String expression) throws InvalidExpression {
     String[] expr = expression.split(" ");
     values = new OpStack();
     String postfixExpr = "";
 
     // Implementation of Shunting Yard Algorithm
-    for (String section : expr) {
-      if (symbolFromString(section) == Symbol.PLUS || symbolFromString(section) == Symbol.MINUS
-          || symbolFromString(section) == Symbol.TIME
-          || symbolFromString(section) == Symbol.DIVIDE) {
+    try {
+      for (String section : expr) {
+        Symbol sectionAsSymbol = symbolFromString(section);
 
-        try {
-          while (values.size() > 0 && values.top() != Symbol.LEFT_BRACKET) {
-            Symbol next = values.pop();
-            postfixExpr += next.toString().charAt(next.toString().length()) + " ";
-          }
-        } catch (Exception e) {
-          throw new InvalidExpression();
-        }
+        if (sectionAsSymbol == Symbol.LEFT_BRACKET) {
+          values.push(Symbol.LEFT_BRACKET);
 
-        values.push(symbolFromString(section));
+        } else if (sectionAsSymbol == Symbol.RIGHT_BRACKET) {
 
-
-      } else if (section.equals("(")) {
-        values.push(Symbol.LEFT_BRACKET);
-      } else if (section.equals(")")) {
-        try {
-          while (values.top() != Symbol.LEFT_BRACKET) {
-            Symbol next = values.pop();
-            postfixExpr += next.toString().charAt(next.toString().length() - 1) + " ";
+          while (values.top() != Symbol.LEFT_BRACKET) { // Add operators from stack until (
+            Symbol operator = values.pop();
+            postfixExpr += operator.toString().charAt(operator.toString().length() - 1) + " ";
           }
           values.pop();
-        } catch (Exception e) {
-          throw new InvalidExpression();
+
+        } else if (sectionAsSymbol != Symbol.INVALID) { // It is an operator
+
+          // If it has < priority than the operator on the top of the stack
+          while (values.size() > 0 && values.top() != Symbol.LEFT_BRACKET
+              && getOperationOrder(values.top()) >= getOperationOrder(sectionAsSymbol)) {
+            // add the operator from the stack
+            Symbol operator = values.pop();
+            postfixExpr += operator.toString().charAt(operator.toString().length() - 1) + " ";
+          }
+
+          // Once the current operator has >= priority, push it to the stack
+          values.push(sectionAsSymbol);
+
+        } else { // it is a number
+          postfixExpr += section + " ";
         }
-      } else { // It is a number
-        postfixExpr += section + " ";
       }
-    }
-    while (values.size() > 0) {
-      try {
+
+      // Add on any remaining operators on the stack (There should be no brackets left)
+      while (values.size() > 0) {
         Symbol operator = values.pop();
         postfixExpr += operator.toString().charAt(operator.toString().length() - 1) + " ";
-      } catch (EmptyStack e) {
-        throw new InvalidExpression();
       }
+
+      return rpCalc.evaluate(postfixExpr); 
+      
+    } catch (Exception e) {
+      throw new InvalidExpression();
     }
-    return rpCalc.evaluate(postfixExpr);
+  }
+
+
+
+  /**
+   * Provides the priority of an operation, with 2 being the highest.
+   * 
+   * @param operator The operator whose conventional operation priority is to be found.
+   * @return The priority of the operation enacted by the operator, with 2 being the highest.
+   */
+  private static int getOperationOrder(Symbol operator) {
+    if (operator == Symbol.PLUS || operator == Symbol.MINUS) {
+      return 1;
+    } else if (operator == Symbol.TIME || operator == Symbol.DIVIDE) {
+      return 2;
+    } else {
+      return 0;
+    }
   }
 
   /**
@@ -102,5 +119,4 @@ public class StandardCalc implements Calculator {
         return Symbol.INVALID;
     }
   }
-
 }
