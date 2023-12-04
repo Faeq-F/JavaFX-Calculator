@@ -106,11 +106,18 @@ class TestStandardCalc {
 
   @Test
   // Test 143
-  // Testing expression with multiple brackets (with 2 of the same operators)
+  // Testing expression with multiple brackets (with 3 of the same operators)
   // Solution: refactored if statements to check for operators all at once, introducing
   // symbolFromString. Made bracket branches store the symbol onto the stack and then add numbers
   // with relevant operators when popping the brackets off.
   void testMultipleBrackets() {
+    assertDoesNotThrow(() -> assertEquals(3.5, calc.evaluate("( 5 / 2 ) / ( 5 / 7 )"), 0.02));
+  }
+
+  @Test
+  // Test 144
+  // Testing expression with multiple brackets and different operators
+  void testMultipleBracketsAndOperators() {
     assertDoesNotThrow(
         () -> assertEquals(0.0714285714, calc.evaluate("( 5 / 2 ) / ( 5 * 7 )"), 0.02));
   }
