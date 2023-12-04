@@ -17,8 +17,7 @@ public class StandardCalc implements Calculator {
    */
   @Override
   public float evaluate(String expression) throws InvalidExpression {
-    
-    return 5;
+    return Float.parseFloat(expression);
   }
 
 }
