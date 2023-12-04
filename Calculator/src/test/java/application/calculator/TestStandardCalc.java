@@ -2,7 +2,7 @@ package application.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ class TestStandardCalc {
         calc.evaluate(randomFloat1 + " + " + randomFloat2)));
   }
 
-  //@Test
+  // @Test
   // Test 135 - Removed to pass pipeline tests - will add later
   // Testing invalid expression with misplaced + symbol
   /*
@@ -94,6 +94,14 @@ class TestStandardCalc {
     float randomFloat2 = random.nextFloat();
     assertDoesNotThrow(() -> assertEquals(randomFloat1 / randomFloat2,
         calc.evaluate(randomFloat1 + " / " + randomFloat2)));
+  }
+
+  @Test
+  // Test 142
+  // Testing evaluation of expression with brackets around an already complete calculation
+  // Solution: added branch for ( and ) - made them skip that iteration of the loop
+  void testBracketsCompleteExpression() {
+    assertDoesNotThrow(() -> assertEquals(2.5, calc.evaluate("( 5 / 2 )")));
   }
 
 }

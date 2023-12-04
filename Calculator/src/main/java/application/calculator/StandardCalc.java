@@ -40,6 +40,10 @@ public class StandardCalc implements Calculator {
         values.push(Symbol.TIME);
       } else if (section.equals("/")) {
         values.push(Symbol.DIVIDE);
+      } else if (section.equals("(")) {
+        continue;
+      } else if (section.equals(")")) {
+        continue;
       } else {
         postfixExpr += section + " ";
       }
