@@ -36,6 +36,8 @@ public class StandardCalc implements Calculator {
         values.push(Symbol.PLUS);
       } else if (section.equals("-")) {
         values.push(Symbol.MINUS);
+      } else if (section.equals("*")) {
+        values.push(Symbol.TIME);
       } else {
         postfixExpr += section + " ";
       }

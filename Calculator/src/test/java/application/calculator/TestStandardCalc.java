@@ -67,4 +67,11 @@ class TestStandardCalc {
         calc.evaluate(randomFloat1 + " - " + randomFloat2)));
   }
 
+  // Test 138
+  // Testing simple multiplication between two numbers
+  // Solution: added branch for *
+  void testSimpleMultiplication() {
+    assertDoesNotThrow(() -> assertEquals(10, calc.evaluate("5 * 2")));
+  }
+
 }
