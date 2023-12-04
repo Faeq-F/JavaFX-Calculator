@@ -86,8 +86,14 @@ class TestStandardCalc {
   // Test 140
   // Testing simple division between two numbers
   // Solution: added branch for /
+  // Test 141
+  // Testing simple division between two random numbers
   void testSimpleDivision() {
     assertDoesNotThrow(() -> assertEquals(2.5, calc.evaluate("5 / 2")));
+    float randomFloat1 = random.nextFloat();
+    float randomFloat2 = random.nextFloat();
+    assertDoesNotThrow(() -> assertEquals(randomFloat1 / randomFloat2,
+        calc.evaluate(randomFloat1 + " / " + randomFloat2)));
   }
 
 }
