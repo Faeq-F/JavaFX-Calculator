@@ -2,7 +2,7 @@ package application.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,13 +37,20 @@ class TestStandardCalc {
   // Solution: Split the argument into sections and push + onto the stack when it is encountered
   // Pop the operator off the stack after all numbers have been added to the postfix string
   // Test 134
-  // Testing the correct evaluation of simple addition between two random numbers.
+  // Testing the correct evaluation of simple addition between two random numbers
   void testSimpleAddition() {
     assertDoesNotThrow(() -> assertEquals(6, calc.evaluate("1 + 5")));
     float randomFloat1 = random.nextFloat();
     float randomFloat2 = random.nextFloat();
     assertDoesNotThrow(() -> assertEquals(randomFloat1 + randomFloat2,
         calc.evaluate(randomFloat1 + " + " + randomFloat2)));
+  }
+
+  @Test
+  // Test 135
+  // Testing invalid expression with misplaced + symbol
+  void testInvalidAddition() {
+    assertThrows(InvalidExpression.class, () -> calc.evaluate("1 5 +"));
   }
 
 }
