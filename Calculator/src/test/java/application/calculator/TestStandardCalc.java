@@ -29,4 +29,11 @@ class TestStandardCalc {
     assertDoesNotThrow(() -> assertEquals(calc.evaluate("" + randomFloat), randomFloat));
   }
 
+  @Test
+  // Test 133
+  // Testing the correct evaluation of simple addition between two numbers
+  void testSimpleAddition() {
+    assertDoesNotThrow(() -> assertEquals(6, calc.evaluate("1 + 5")));
+  }
+
 }
