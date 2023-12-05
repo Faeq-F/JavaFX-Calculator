@@ -1,5 +1,6 @@
 package application.view;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import application.calculator.CalculatorFactory;
@@ -64,6 +65,16 @@ class TestCalcController {
         + " 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +", 29308.02, 0.02);
 
     runNewTest("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +", 1420.3636, 0.002);
+  }
+  
+  @Test
+  //Test 156
+  //Testing infix expressions with type change
+  void testInfixTypeChange() {
+    view.expression = "5 + 2 / 5 * 7 - 8";
+    testController.handleTypeChange("infix");
+    view.calculate();
+    assertEquals(-0.2, Float.parseFloat(view.answer), 0.02);
   }
 
 }

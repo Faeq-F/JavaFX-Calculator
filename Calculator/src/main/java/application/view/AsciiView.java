@@ -1,6 +1,5 @@
 package application.view;
 
-import application.calculator.OpType;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
@@ -19,7 +18,7 @@ public class AsciiView implements ViewInterface {
   Runnable doCalculation;
 
   // This method changes how the calculator will evaluate the question
-  Consumer<OpType> setCalculatorType;
+  Consumer<String> setCalculatorType;
 
   private void menu() {
     Scanner s = new Scanner(System.in);
@@ -65,7 +64,7 @@ public class AsciiView implements ViewInterface {
   }
 
   @Override
-  public void addTypeObserver(Consumer<OpType> c) {
+  public void addTypeObserver(Consumer<String> c) {
 
   }
 

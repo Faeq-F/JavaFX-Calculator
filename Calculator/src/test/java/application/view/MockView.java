@@ -1,6 +1,5 @@
 package application.view;
 
-import application.calculator.OpType;
 import java.util.function.Consumer;
 
 /**
@@ -18,7 +17,7 @@ public class MockView implements ViewInterface {
   }
 
   @Override
-  public void addTypeObserver(Consumer<OpType> c) {}
+  public void addTypeObserver(Consumer<String> c) {}
 
   /**
    * A mock method representing what would happen when the user would press the 'calculate' button
