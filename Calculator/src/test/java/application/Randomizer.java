@@ -1,7 +1,9 @@
 package application;
 
 import application.stack.NumStack;
+import application.stack.OpStack;
 import application.stack.Stack;
+import application.stack.StrStack;
 import application.stack.assembly.Entry;
 import application.stack.assembly.Symbol;
 import java.util.Random;
@@ -29,7 +31,7 @@ public final class Randomizer {
    * @param stack The stack to push entries to.
    * @param givenLimit The number of entries to push. If -1, a random amount of entries is
    *        pushed.
-   * @return A string representing what a stack's toString method should return if only the entries
+   * @return Represents what a stack's toString method should return if only the entries
    *         pushed in this method were in it.
    */
   public static String pushRandomItems(Stack stack, int givenLimit) {
@@ -46,9 +48,9 @@ public final class Randomizer {
   /**
    * Pushes a random number of random floats to the given NumStack, if a limit is not given.
    * 
-   * @param numstack to push 
+   * @param numstack The stack to push floats to. 
    * @param givenLimit number of floats to push. If -1, a random amount of floats is pushed.
-   * @return a string representing what a stack's toString method should return if only the entries
+   * @return Represents what a stack's toString method should return if only the floats
    *         pushed in this method were in it.
    */
   public static String pushRandomFloats(NumStack numstack, int givenLimit) {
@@ -58,6 +60,44 @@ public final class Randomizer {
       float randomFloat = random.nextFloat();
       numstack.push(randomFloat);
       output += randomFloat + "\n";
+    }
+    return output;
+  }
+  
+  /**
+   * Pushes a random number of random Symbols to the given OpStack, if a limit is not given.
+   * 
+   * @param opStack The stack to push Symbols to. 
+   * @param givenLimit number of Symbols to push. If -1, a random amount of Symbols is pushed.
+   * @return Represents what a stack's toString method should return if only the Symbols
+   *         pushed in this method were in it.
+   */
+  public static String pushRandomSymbols(OpStack opStack, int givenLimit) {
+    int limit = parseGivenLimit(givenLimit);
+    String output = "The OpStack currently contains the following symbols:\n";
+    for (int number = 0; number < limit; number++) {
+      Symbol randomSymbol = Randomizer.generateRandomSymbol();
+      opStack.push(randomSymbol);
+      output += randomSymbol + "\n";
+    }
+    return output;
+  }
+  
+  /**
+   * Pushes a random number of random Strings to the given StrStack, if a limit is not given.
+   * 
+   * @param strStack The stack to push Strings to. 
+   * @param givenLimit number of Strings to push. If -1, a random amount of Strings is pushed.
+   * @return Represents what a stack's toString method should return if only the Strings
+   *         pushed in this method were in it.
+   */
+  public static String pushRandomStrings(StrStack strStack, int givenLimit) {
+    int limit = parseGivenLimit(givenLimit);
+    String output = "The StrStack currently contains the following strings:\n";
+    for (int number = 0; number < limit; number++) {
+      String randomString = Randomizer.generateRandomString();
+      strStack.push(randomString);
+      output += randomString + "\n";
     }
     return output;
   }

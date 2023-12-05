@@ -1,6 +1,5 @@
 package application.view;
 
-import application.calculator.OpType;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -14,19 +13,19 @@ import java.util.function.Function;
 public interface ViewInterface {
 
   /**
-   * Add the method that should do the calculation. The evaluate parameter has to take a parameter
-   * and return the result.
+   * Add the method that should do the calculation.
    * 
-   * @param evaluate The method to do the calculation.
+   * @param function The runnable object to do the calculation (a method that takes no parameters
+   *        and returns no value)
    */
-  void addCalculateObserver(Function<String, String> evaluate);
+  void addCalculateObserver(Runnable function);
 
   /**
    * Add the method to tell the controller the type of calculation to do.
    * 
-   * @param c the method to do the calculation takes an OpType argument and returns no value
+   * @param c the method to do the calculation takes a string argument and returns no value
    */
-  void addTypeObserver(Consumer<OpType> c);
+  void addTypeObserver(Consumer<String> c);
 
   /**
    * The controller can call this to find the current expression to be evaluated.

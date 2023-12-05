@@ -79,8 +79,9 @@
                 <version>0.8.10</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/Test*.java</exclude>
-                        <exclude>**/Mock*.java</exclude>
+                        <exclude>**/*View*</exclude>
+                        <exclude>**/*Driver*</exclude>
+                        <exclude>**/test/**/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

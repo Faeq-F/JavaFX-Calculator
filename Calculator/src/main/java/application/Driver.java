@@ -1,9 +1,8 @@
 package application;
 
 import application.calculator.CalcModel;
-import application.view.AsciiView;
 import application.view.CalcController;
-import application.view.CalcView;
+import application.view.ViewFactory;
 import application.view.ViewInterface;
 
 /**
@@ -16,22 +15,14 @@ public class Driver {
   /**
    * The entry point for the calculator.
    * 
-   * @param args ignored - will be used to choose which view to load in future
+   * @param args A single string, which is either 'GUI' or 'CLI', used to create the desired UI. If
+   *        neither, the UI created is based off whether System.console() is null.
    */
   public static void main(String[] args) {
-    ViewInterface view = new AsciiView();
+    ViewFactory viewFactory = new ViewFactory(); // Auto-magically choose which view to use!
+    ViewInterface view = viewFactory.create(args.length < 1 ? "" : args[0]);
 
-    CalcModel model = new CalcModel();
-    System.out.println("hello");
-
-    // Decide which view to build.
-    if (System.console() == null) {
-      System.out.println("hello");
-      view = CalcView.getInstance();
-    }
-    new CalcController(model, view);
-    
-    // All ready so begin the interface.
+    new CalcController(new CalcModel(), view);
     view.startView();
   }
 }
