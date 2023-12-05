@@ -29,7 +29,7 @@ class TestCalcModel {
     assertDoesNotThrow(() -> assertEquals(firstNum * secondNum,
         model.evaluate(firstNum + " " + secondNum + " *")));
   }
-  
+
   @Test
   // Test 91
   // Testing larger mathematical expressions with default postfix calc
@@ -47,8 +47,15 @@ class TestCalcModel {
             + " 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"), 0.02));
 
     assertDoesNotThrow(() -> assertEquals(1420.3636,
-        model.evaluate("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"),
-        0.002));
+        model.evaluate("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"), 0.002));
   }
 
+  @Test
+  // Test 152
+  // Testing infix expressions after setting type with "infix"
+  void testInfixWithStateChange() {
+    model.setType("infix");
+    assertDoesNotThrow(
+        () -> assertEquals(-1.4, model.evaluate("( 5 + 2 ) / ( 5 * ( 7 - 8 ) )"), 0.02));
+  }
 }
