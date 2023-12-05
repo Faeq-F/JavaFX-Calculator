@@ -67,4 +67,13 @@ class TestCalcModel {
     assertDoesNotThrow(
         () -> assertEquals(21.5454, model.evaluate("10 6 9 3 + -11 * / * 17 + 5 +"), 0.002));
   }
+  
+  @Test
+  // Test 154
+  // Testing infix expressions after setting type with empty string
+  void testInfixWithEmptyStateChange() {
+    model.setType("");
+    assertDoesNotThrow(
+        () -> assertEquals(-1.4, model.evaluate("( 5 + 2 ) / ( 5 * ( 7 - 8 ) )"), 0.02));
+  }
 }
