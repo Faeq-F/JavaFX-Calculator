@@ -2,7 +2,7 @@ package application.view;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import application.calculator.CalcModel;
+import application.calculator.CalculatorFactory;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ class TestCalcController {
   void setUp() {
     view = new MockView();
     view.startView();
-    testController = new CalcController(new CalcModel(), view);
+    testController = new CalcController(new CalculatorFactory().create(""), view);
     random = new Random();
   }
 
@@ -31,7 +31,7 @@ class TestCalcController {
    *        assertEquals). If -1, it is ignored.
    */
   private void runNewTest(String expr, double expected, double delta) {
-    view.setExpression(expr);
+    view.expression = expr;
     view.calculate();
     if (delta != -1) {
       assertEquals(expected, Float.parseFloat(view.answer), delta);

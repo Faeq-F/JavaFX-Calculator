@@ -10,6 +10,7 @@ public class MockView implements ViewInterface {
   public Runnable evaluateMethodToBeNotified;
   public String expression;
   public String answer;
+  public String type;
 
   @Override
   public void addCalculateObserver(Runnable function) {
@@ -25,15 +26,6 @@ public class MockView implements ViewInterface {
    */
   public void calculate() {
     evaluateMethodToBeNotified.run();
-  }
-
-  /**
-   * Allows tests to simulate the user typing in an expression.
-   * 
-   * @param expr The expression to evaluate.
-   */
-  public void setExpression(String expr) {
-    expression = expr;
   }
 
   @Override

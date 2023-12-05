@@ -20,7 +20,7 @@ class TestViewFactory {
   // Test 99
   // Modified to work with CI pipeline on GitLab - using Mock objects
   void testGUIarg() {
-    assertEquals("A GUI", viewFactory.create("GUI"));
+    assertEquals("GUI", ((MockView) viewFactory.create("GUI")).type);
   }
 
   @Test
@@ -29,7 +29,7 @@ class TestViewFactory {
   // Test 100
   // Modified to work with CI pipeline on GitLab - using Mock objects
   void testCLIarg() {
-    assertEquals("A CLI", viewFactory.create("CLI"));
+    assertEquals("CLI", ((MockView) viewFactory.create("CLI")).type);
   }
 
   @Test
@@ -38,7 +38,8 @@ class TestViewFactory {
   // Test 101
   // Modified to work with CI pipeline on GitLab - using Mock objects
   void testNoArg() {
-    assertEquals(System.console() == null ? "A GUI" : "A CLI", viewFactory.create(""));
+    assertEquals(System.console() == null ? "GUI" : "CLI",
+        ((MockView) viewFactory.create("")).type);
   }
 
 }
