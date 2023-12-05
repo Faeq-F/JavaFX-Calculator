@@ -36,7 +36,7 @@ public class TestStrStack {
   void testSize() {
     String itemsString = Randomizer.pushRandomStrings(strStack, -1);
     int stackSize = itemsString.split("\n").length - 1;
-    assertEquals(stackSize, strStack.size());
+    assertEquals(stackSize, strStack.size(), 1);
   }
 
   @Test

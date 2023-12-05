@@ -135,5 +135,12 @@ class TestStandardCalc {
   void testMultipleOperatorsNoBrackets() {
     assertDoesNotThrow(() -> assertEquals(-0.2, calc.evaluate("5 + 2 / 5 * 7 - 8"), 0.02));
   }
+  
+  @Test
+  // Test 147
+  // Testing invalid expression with too many numbers
+  void testInvalidExprNumbers() {
+    assertThrows(InvalidExpression.class, () -> calc.evaluate("1 + 5 9"));
+  }
 
 }
