@@ -90,7 +90,7 @@ public class CalcView extends Application implements ViewInterface {
    * This is a Singleton View constructed by the JavaaFX Thread and made available through this
    * method.
    * 
-   * @return the single object representing this view
+   * @return The single object representing this view.
    */
   public static synchronized CalcView getInstance() {
     if (instance == null) {

@@ -2,10 +2,6 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
-
-- No changes.
-
 ## [Release 3.0] - 2023-12-05
 
 ### Added
