@@ -83,8 +83,9 @@ class TestCalcController {
   void testInvalidExpr() {
     view.expression = "5 6 7 + * 2";
     view.calculate();
-    assertEquals("The expression is invalid; please check the format of the expression."
-        + " The resulting value may be too large or too small.", view.answer);
+    assertEquals(
+        "The expression is invalid; The expression is invalid; There are too many numbers!",
+        view.answer);
   }
 
 }
