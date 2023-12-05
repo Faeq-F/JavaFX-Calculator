@@ -30,6 +30,12 @@ public class AsciiView implements ViewInterface {
         case 'C': // Ask the controller to calculate
           doCalculation.run();
           break;
+        case 'S':
+          setCalculatorType.accept("infix");
+          break;
+        case 'R':
+          setCalculatorType.accept("postfix");
+          break;
         case '?': // Set current question
           question = s.nextLine();
           break;
@@ -65,7 +71,7 @@ public class AsciiView implements ViewInterface {
 
   @Override
   public void addTypeObserver(Consumer<String> c) {
-
+    setCalculatorType = c;
   }
 
   @Override
@@ -77,18 +83,18 @@ public class AsciiView implements ViewInterface {
   public void addCalculateObserver(Runnable function) {
     doCalculation = function;
   }
-  
-  /////////////////////////////////////////////////////////////////////////////////  
+
+  /////////////////////////////////////////////////////////////////////////////////
   // Block for creating an instance variable for others to use - singleton.
-  
+
   /**
    * A private constructor for the singleton View. Constructs the view.
    */
   private AsciiView() {
     doCalculation = null;
-    setCalculatorType = null; 
+    setCalculatorType = null;
   }
-  
+
   private static volatile AsciiView instance = new AsciiView();
 
   /**
@@ -98,7 +104,7 @@ public class AsciiView implements ViewInterface {
    */
   public static synchronized AsciiView getInstance() {
     if (instance == null) {
-      instance = new AsciiView(); 
+      instance = new AsciiView();
     }
     return instance;
   }
