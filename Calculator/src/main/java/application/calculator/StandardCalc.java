@@ -79,11 +79,11 @@ public class StandardCalc implements Calculator {
 
         return rpCalc.evaluate(postfixExpr);
 
-      } catch (Exception ex) {
-        throw new InvalidExpression();
+      } catch (Exception exception) {
+        throw new InvalidExpression(exception.getMessage());
       }
     }
-    throw new InvalidExpression();
+    throw new InvalidExpression("The expression seems to be in postfix notation!");
   }
 
   /**

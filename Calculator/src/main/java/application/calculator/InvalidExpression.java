@@ -14,4 +14,8 @@ public class InvalidExpression extends Exception {
         + " The resulting value may be too large or too small.");
   }
 
+  public InvalidExpression(String message) {
+    super("The expression is invalid; " + message);
+  }
+
 }
