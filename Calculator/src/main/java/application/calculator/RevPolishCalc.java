@@ -19,6 +19,7 @@ public class RevPolishCalc implements Calculator {
    * @return The value the expression evaluates to.
    * @throws InvalidExpression When the expression cannot be calculated.
    */
+  @Override
   public float evaluate(String expr) throws InvalidExpression {
     numStack = new NumStack();
     String[] expression = expr.split(" ");

@@ -25,18 +25,18 @@ public class NumStack {
   /**
    * Pushes a value onto the top of this stack.
    * 
-   * @param value the value to be pushed onto this stack.
+   * @param value The value to be pushed onto this stack.
    */
   public void push(float value) {
     numStack.push(new Entry(value));
   }
 
   /**
-   * Removes the value at the top of this stack and returns that entry as the value of this
+   * Removes the value at the top of this stack and returns that number as the value of this
    * function.
    * 
    * @return The value at the top of this stack.
-   * @throws EmptyStack if this stack is empty.
+   * @throws EmptyStack If this stack is empty.
    */
   public float pop() throws EmptyStack {
     try {
@@ -52,8 +52,8 @@ public class NumStack {
   /**
    * Looks at the value at the top of this stack without removing it from the stack.
    * 
-   * @return the value at the top of this stack.
-   * @throws EmptyStack if this stack is empty.
+   * @return The value at the top of this stack.
+   * @throws EmptyStack If this stack is empty.
    */
   public float top() throws EmptyStack {
     try {
