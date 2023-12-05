@@ -17,8 +17,15 @@ class TestCalculatorFactory {
   @Test
   // Test 149
   // Testing RevPolishCalc is returned when "postfix" is passed in
-  void testGUIarg() {
+  void testPostfixArg() {
     assertEquals(new RevPolishCalc().getClass(), calcFactory.create("postfix").getClass());
+  }
+  
+  @Test
+  // Test 150
+  // Testing StandardCalc is returned when "infix" is passed in
+  void testInfixArg() {
+    assertEquals(new StandardCalc().getClass(), calcFactory.create("infix").getClass());
   }
 
 }
