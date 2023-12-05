@@ -27,5 +27,12 @@ class TestCalculatorFactory {
   void testInfixArg() {
     assertEquals(new StandardCalc().getClass(), calcFactory.create("infix").getClass());
   }
+  
+  @Test
+  // Test 151
+  // Testing CalcModel is returned when "" is passed in
+  void testNoArg() {
+    assertEquals(new CalcModel().getClass(), calcFactory.create("").getClass());
+  }
 
 }
