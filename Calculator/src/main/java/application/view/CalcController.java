@@ -1,6 +1,7 @@
 package application.view;
 
 import application.calculator.CalcModel;
+import application.calculator.Calculator;
 import application.calculator.InvalidExpression;
 
 /**
@@ -10,12 +11,12 @@ import application.calculator.InvalidExpression;
  * @author zlac318
  */
 public class CalcController {
-  private CalcModel model;
+  private Calculator model;
   private ViewInterface view;
 
   /**
-   * Get the Model to calculate the expression from the view, and set the result of the
-   * calculation in the relevant place, in the view.
+   * Get the Model to calculate the expression from the view, and set the result of the calculation
+   * in the relevant place, in the view.
    */
   public void handleCalculation() { // could make a mock class to keep these private
     try {
@@ -25,7 +26,9 @@ public class CalcController {
     }
   }
 
-  public void handleTypeChange() {}
+  public void handleTypeChange(String type) {
+    ((CalcModel) model).setType(type);
+  }
 
   /**
    * Instantiates the calculator.
@@ -33,9 +36,10 @@ public class CalcController {
    * @param model used to calculate expressions.
    * @param view with actions to observe.
    */
-  public CalcController(CalcModel model, ViewInterface view) {
+  public CalcController(Calculator model, ViewInterface view) {
     this.view = view;
     this.model = model;
     view.addCalculateObserver(this::handleCalculation);
+    view.addTypeObserver(this::handleTypeChange);
   }
 }

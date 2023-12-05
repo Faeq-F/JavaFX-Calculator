@@ -9,16 +9,24 @@ public class MockViewFactory {
    * The factory method for creating views based on the type of UI the user wishes to interact with.
    * 
    * @param type The type of interface the user wishes to interact with.
-   * @return A representation of the UI, the user would interact with.
+   * @return A MockView with the type of UI the user would interact with.
    */
-  public String create(String type) {
+  public ViewInterface create(String type) {
+    MockView view = new MockView();
     switch (type) {
       case "CLI":
-        return "A CLI";
+        view.type = "CLI";
+        return view;
       case "GUI":
-        return "A GUI";
+        view.type = "GUI";
+        return view;
       default:
-        return System.console() == null ? "A GUI" : "A CLI";
+        if (System.console() == null) {
+          view.type = "GUI";
+        } else {
+          view.type = "CLI";
+        }
+        return view;
     }
   }
 }
