@@ -1,6 +1,5 @@
 package application.view;
 
-import application.calculator.OpType;
 import java.io.IOException;
 import java.util.function.Consumer;
 import javafx.application.Application;
@@ -44,9 +43,9 @@ public class CalcView extends Application implements ViewInterface {
   }
 
   @Override
-  public void addTypeObserver(Consumer<OpType> c) {
-    infixCalculatorButton.setOnAction(event -> c.accept(OpType.STANDARD));
-    revPolishCalculatorButton.setOnAction(event -> c.accept(OpType.REV_POLISH));
+  public void addTypeObserver(Consumer<String> c) {
+    infixCalculatorButton.setOnAction(event -> c.accept("infix"));
+    revPolishCalculatorButton.setOnAction(event -> c.accept("postfix"));
   }
 
   @Override

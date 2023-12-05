@@ -29,7 +29,7 @@ class TestCalcModel {
     assertDoesNotThrow(() -> assertEquals(firstNum * secondNum,
         model.evaluate(firstNum + " " + secondNum + " *")));
   }
-  
+
   @Test
   // Test 91
   // Testing larger mathematical expressions with default postfix calc
@@ -47,8 +47,44 @@ class TestCalcModel {
             + " 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"), 0.02));
 
     assertDoesNotThrow(() -> assertEquals(1420.3636,
-        model.evaluate("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"),
-        0.002));
+        model.evaluate("5 6 7 + * 2 - 10 6 9 3 + -11 * / * 17 + 5 + * 5 6 7 + * 2 - +"), 0.002));
   }
 
+  @Test
+  // Test 152
+  // Testing infix expressions after setting type with "infix"
+  void testInfixWithStateChange() {
+    model.setType("infix");
+    assertDoesNotThrow(
+        () -> assertEquals(-1.4, model.evaluate("( 5 + 2 ) / ( 5 * ( 7 - 8 ) )"), 0.02));
+  }
+  
+  @Test
+  // Test 153
+  // Testing postfix expressions after setting type with "postfix"
+  void testPostfixWithStateChange() {
+    model.setType("postfix");
+    assertDoesNotThrow(
+        () -> assertEquals(21.5454, model.evaluate("10 6 9 3 + -11 * / * 17 + 5 +"), 0.002));
+  }
+  
+  @Test
+  // Test 154
+  // Testing infix expressions after setting type with empty string
+  void testInfixWithEmptyStateChange() {
+    model.setType("");
+    assertDoesNotThrow(
+        () -> assertEquals(-1.4, model.evaluate("( 5 + 2 ) / ( 5 * ( 7 - 8 ) )"), 0.02));
+  }
+  
+  @Test
+  // Test 155
+  // Testing postfix expressions after setting type with an empty string multiple times
+  void testPostfixWithMultipleStateChanges() {
+    model.setType(""); // Should change type to infix
+    model.setType(""); // Should change type back to postfix
+    assertDoesNotThrow(
+        () -> assertEquals(21.5454, model.evaluate("10 6 9 3 + -11 * / * 17 + 5 +"), 0.002));
+  }
+  
 }
