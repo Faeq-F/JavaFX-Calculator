@@ -58,4 +58,13 @@ class TestCalcModel {
     assertDoesNotThrow(
         () -> assertEquals(-1.4, model.evaluate("( 5 + 2 ) / ( 5 * ( 7 - 8 ) )"), 0.02));
   }
+  
+  @Test
+  // Test 153
+  // Testing postfix expressions after setting type with "postfix"
+  void testPostfixWithStateChange() {
+    model.setType("postfix");
+    assertDoesNotThrow(
+        () -> assertEquals(21.5454, model.evaluate("10 6 9 3 + -11 * / * 17 + 5 +"), 0.002));
+  }
 }
