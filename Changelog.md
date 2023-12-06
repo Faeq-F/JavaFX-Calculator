@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Release 4.0] - 2023-12-06
+
+### Added
+
+- History option to [CLI].
+
+### Fixed
+
+- Nothing.
+
+### Changed
+
+- [CLI] menu to be simpler.
+
+### Security
+
+- No changes.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- [CLI] menu options for calculate expression, switch to Standard calculator and switch to Reverse Polish Calculator.
+    - Calculate expression option is now combined with the set expression option.
+    - Switching calculators is now combined into a single 'change notation type' option.
+
 ## [Release 3.1] - 2023-12-06
 
 ### Added
@@ -187,6 +215,7 @@ All notable changes to this project will be documented in this file.
 
 - Nothing.
 
+[Release 4.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-4.0
 [Release 3.1]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-3.1
 [Release 3.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-3.0
 [infix]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-infixCalculator?ref_type=heads
