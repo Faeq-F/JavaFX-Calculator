@@ -127,4 +127,9 @@ public class StandardCalc implements Calculator {
         return Symbol.INVALID;
     }
   }
+  
+  @Override
+  public String toString() {
+    return "Standard (infix) calculator";
+  }
 }

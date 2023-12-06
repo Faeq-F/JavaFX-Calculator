@@ -47,6 +47,12 @@ public class CalcView extends Application implements ViewInterface {
     infixCalculatorButton.setOnAction(event -> c.accept("infix"));
     revPolishCalculatorButton.setOnAction(event -> c.accept("postfix"));
   }
+  
+  @Override
+  public void setCalculatorNotification(String notification) {
+    // TODO Auto-generated method stub
+    
+  }
 
   @Override
   public String getExpression() {

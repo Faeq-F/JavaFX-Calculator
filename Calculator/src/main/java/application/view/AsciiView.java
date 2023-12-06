@@ -14,6 +14,12 @@ public class AsciiView implements ViewInterface {
   // The current question that the calculator must solve: entered like ? 3 * ( 5 + 4 )
   private String question;
 
+  // The current type of calculator being used - a notification given to the user when they first
+  // run the program & change type
+  private String typeNotification;
+
+  private String history;
+
   // This method will be injected so we can ask the controller to calculate
   Runnable doCalculation;
 
@@ -23,21 +29,21 @@ public class AsciiView implements ViewInterface {
   private void menu() {
     Scanner s = new Scanner(System.in);
     boolean finished = false;
+    System.out.println(typeNotification);
     help();
     while (!finished && s.hasNext()) {
       String t = s.next();
       switch (t.toUpperCase().charAt(0)) {
-        case 'C': // Ask the controller to calculate
+        case '?': // Set and calculate current question
+          question = s.nextLine();
           doCalculation.run();
           break;
-        case 'S':
-          setCalculatorType.accept("infix");
+        case 'C': // Change the notation type to the one currently not being used
+          setCalculatorType.accept("");
+          System.out.println(typeNotification);
           break;
-        case 'R':
-          setCalculatorType.accept("postfix");
-          break;
-        case '?': // Set current question
-          question = s.nextLine();
+        case 'H':
+          System.out.println("\n\nHistory:\n" + history + "\n");
           break;
         case 'Q':
           System.out.println("Bye");
@@ -52,10 +58,9 @@ public class AsciiView implements ViewInterface {
 
   private void help() {
     System.out.println("Use one of the following:");
-    System.out.println("  ? Expression - to set expression");
-    System.out.println("  C - to calculate");
-    System.out.println("  S - change to a standard calculator");
-    System.out.println("  R - change to a reverse polish calculator");
+    System.out.println("  ? Expression - to calculate an expression");
+    System.out.println("  C - to change notation type");
+    System.out.println("  H - to display history");
     System.out.println("  Q - to exit");
   }
 
@@ -67,6 +72,24 @@ public class AsciiView implements ViewInterface {
   @Override
   public void setAnswer(String answer) {
     System.out.println(answer);
+
+    if (answer.contains("invalid")) {
+      answer = "invalid expression"; // less clutter in history view
+    }
+    history += question + " = " + answer + "\n";
+  }
+
+  @Override
+  public void startView() {
+    menu();
+  }
+
+  // Methods for registering an observer and for accessing user data in the UI
+  // These methods build the Observer/Observable pattern
+
+  @Override
+  public void addCalculateObserver(Runnable function) {
+    doCalculation = function;
   }
 
   @Override
@@ -75,13 +98,8 @@ public class AsciiView implements ViewInterface {
   }
 
   @Override
-  public void startView() {
-    menu();
-  }
-
-  @Override
-  public void addCalculateObserver(Runnable function) {
-    doCalculation = function;
+  public void setCalculatorNotification(String notification) {
+    typeNotification = notification;
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -93,6 +111,7 @@ public class AsciiView implements ViewInterface {
   private AsciiView() {
     doCalculation = null;
     setCalculatorType = null;
+    history = "";
   }
 
   private static volatile AsciiView instance = new AsciiView();
