@@ -5,8 +5,10 @@
 	<groupId>cs.rhul.ac.uk</groupId>
 	<artifactId>Calculator</artifactId>
 	<packaging>jar</packaging>
-	<version>3.1</version>
+	<version>4.0</version>
 	<name>Calculator for CS2800 Coursework</name>
+	<url>https://gitlab.cim.rhul.ac.uk/zlac318/CS2800</url>
+    <description>A calculator, capable of evaluating expressions in both postfix and infix notation, with a GUI and CLI.</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>

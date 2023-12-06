@@ -27,17 +27,15 @@ public class AsciiView implements ViewInterface {
     while (!finished && s.hasNext()) {
       String t = s.next();
       switch (t.toUpperCase().charAt(0)) {
-        case 'C': // Ask the controller to calculate
-          doCalculation.run();
-          break;
         case 'S':
           setCalculatorType.accept("infix");
           break;
         case 'R':
           setCalculatorType.accept("postfix");
           break;
-        case '?': // Set current question
+        case '?': // Set and calculate current question
           question = s.nextLine();
+          doCalculation.run();
           break;
         case 'Q':
           System.out.println("Bye");
@@ -52,8 +50,8 @@ public class AsciiView implements ViewInterface {
 
   private void help() {
     System.out.println("Use one of the following:");
-    System.out.println("  ? Expression - to set expression");
-    System.out.println("  C - to calculate");
+    System.out.println("  ? Expression - to calculate an expression");
+    //System.out.println("  C - to calculate");
     System.out.println("  S - change to a standard calculator");
     System.out.println("  R - change to a reverse polish calculator");
     System.out.println("  Q - to exit");
