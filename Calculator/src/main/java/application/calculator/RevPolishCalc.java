@@ -60,4 +60,9 @@ public class RevPolishCalc implements Calculator {
       throw new InvalidExpression(e.getMessage().replace("The expression is invalid; ", ""));
     }
   }
+  
+  @Override
+  public String toString() {
+    return "Reverse Polish (postfix) calculator";
+  }
 }

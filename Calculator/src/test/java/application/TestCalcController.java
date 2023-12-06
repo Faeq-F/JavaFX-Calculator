@@ -83,9 +83,16 @@ class TestCalcController {
   void testInvalidExpr() {
     view.expression = "5 6 7 + * 2";
     view.calculate();
-    assertEquals(
-        "The expression is invalid; There are too many numbers!",
-        view.answer);
+    assertEquals("The expression is invalid; There are too many numbers!", view.answer);
+  }
+
+  @Test
+  // Test 158
+  // Testing calculator notification
+  // Solution: implemented notification methods in controller and views
+  void testNotification() {
+    testController.handleTypeChange(""); // Should change the calculator to infix
+    assertEquals("Currently using the Standard (infix) calculator", view.typeNotification);
   }
 
 }
