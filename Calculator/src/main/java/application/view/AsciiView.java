@@ -18,6 +18,8 @@ public class AsciiView implements ViewInterface {
   // run the program & change type
   private String typeNotification;
 
+  private String history;
+
   // This method will be injected so we can ask the controller to calculate
   Runnable doCalculation;
 
@@ -40,6 +42,9 @@ public class AsciiView implements ViewInterface {
           setCalculatorType.accept("");
           System.out.println(typeNotification);
           break;
+        case 'H':
+          System.out.println("\n\nHistory:\n" + history + "\n");
+          break;
         case 'Q':
           System.out.println("Bye");
           finished = true;
@@ -55,6 +60,7 @@ public class AsciiView implements ViewInterface {
     System.out.println("Use one of the following:");
     System.out.println("  ? Expression - to calculate an expression");
     System.out.println("  C - to change notation type");
+    System.out.println("  H - to display history");
     System.out.println("  Q - to exit");
   }
 
@@ -66,6 +72,11 @@ public class AsciiView implements ViewInterface {
   @Override
   public void setAnswer(String answer) {
     System.out.println(answer);
+
+    if (answer.contains("invalid")) {
+      answer = "invalid expression"; // less clutter in history view
+    }
+    history += question + " = " + answer + "\n";
   }
 
   @Override
@@ -100,6 +111,7 @@ public class AsciiView implements ViewInterface {
   private AsciiView() {
     doCalculation = null;
     setCalculatorType = null;
+    history = "";
   }
 
   private static volatile AsciiView instance = new AsciiView();
