@@ -1,8 +1,9 @@
-package application.view;
+package application;
 
 import application.calculator.CalcModel;
 import application.calculator.Calculator;
 import application.calculator.InvalidExpression;
+import application.view.ViewInterface;
 
 /**
  * The controller that sits between the calculator model that does actual evaluation and the view
@@ -27,14 +28,14 @@ public class CalcController {
   }
 
   public void handleTypeChange(String type) {
-    ((CalcModel) model).setType(type);
+    ((CalcModel) model).setType(type); // You can only change type if using the CalcModel
   }
 
   /**
    * Instantiates the calculator.
    * 
-   * @param model used to calculate expressions.
-   * @param view with actions to observe.
+   * @param model Used to calculate expressions.
+   * @param view The view with actions to observe.
    */
   public CalcController(Calculator model, ViewInterface view) {
     this.view = view;

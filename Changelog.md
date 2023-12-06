@@ -2,9 +2,57 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## [Release 3.1] - 2023-12-06
+
+### Added
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+### Changed
+
+- Error messages to be more specific.
+
+### Security
 
 - No changes.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+## [Release 3.0] - 2023-12-05
+
+### Added
+
+- Standard ([infix]) calculator.
+
+### Fixed
+
+- Nothing.
+
+### Changed
+
+- Integrated [infix] calculator with [GUI] & [CLI] views.
+
+### Security
+
+- No changes.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
 
 ## [Release 2.1] - 2023-11-30
 
@@ -139,6 +187,9 @@ All notable changes to this project will be documented in this file.
 
 - Nothing.
 
+[Release 3.1]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-3.1
+[Release 3.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-3.0
+[infix]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-infixCalculator?ref_type=heads
 [Release 2.1]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-2.1
 [command line interface]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/feature-cli?ref_type=heads
 [Release 2.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-2.0

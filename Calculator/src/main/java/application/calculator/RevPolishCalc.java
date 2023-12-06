@@ -45,19 +45,19 @@ public class RevPolishCalc implements Calculator {
               float number = Float.parseFloat(section);
               if (number == Float.MAX_VALUE || number == Float.MIN_VALUE
                   || number == Float.NEGATIVE_INFINITY || number == Float.POSITIVE_INFINITY) {
-                throw new InvalidExpression();
+                throw new InvalidExpression("The result is too high / too low to compute!");
               }
               numStack.push(number);
             }
         }
       }
       if (numStack.size() > 1) {
-        throw new InvalidExpression();
+        throw new InvalidExpression("There are too many numbers!");
       } else {
         return numStack.pop();
       }
-    } catch (Exception e) {
-      throw new InvalidExpression();
+    } catch (Exception e) { // replace prevents phrase from duplicating when exception propagates
+      throw new InvalidExpression(e.getMessage().replace("The expression is invalid; ", ""));
     }
   }
 }
