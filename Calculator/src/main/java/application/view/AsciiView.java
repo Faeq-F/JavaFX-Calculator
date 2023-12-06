@@ -100,7 +100,7 @@ public class AsciiView implements ViewInterface {
   /**
    * This is a Singleton View made available through this method.
    * 
-   * @return the single object representing this view
+   * @return The single object representing this view.
    */
   public static synchronized AsciiView getInstance() {
     if (instance == null) {

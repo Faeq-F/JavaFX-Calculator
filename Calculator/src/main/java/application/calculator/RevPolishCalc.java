@@ -56,8 +56,8 @@ public class RevPolishCalc implements Calculator {
       } else {
         return numStack.pop();
       }
-    } catch (Exception e) {
-      throw new InvalidExpression(e.getMessage());
+    } catch (Exception e) { // replace prevents phrase from duplicating when exception propagates
+      throw new InvalidExpression(e.getMessage().replace("The expression is invalid; ", ""));
     }
   }
 }
