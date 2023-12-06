@@ -13,8 +13,8 @@ public class BadType extends Exception {
   /**
    * Constructs a new BadType exception with the conflicting types in the error message string.
    * 
-   * @param askedType the specified type of the return value of a method called from the entry.
-   * @param heldType the type of the value held by the entry.
+   * @param askedType The specified type of the return value of a method called from the entry.
+   * @param heldType The type of the value held by the entry.
    */
   public BadType(Type askedType, Type heldType) {
     super("Unable to get value. " + askedType.name() + " was asked for, but Entry held "

@@ -79,7 +79,7 @@ public class StandardCalc implements Calculator {
 
         return rpCalc.evaluate(postfixExpr);
 
-      } catch (Exception exception) {
+      } catch (Exception exception) {   
         throw new InvalidExpression(exception.getMessage());
       }
     }

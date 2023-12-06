@@ -1,7 +1,7 @@
 package application;
 
-import application.calculator.CalcModel;
-import application.view.CalcController;
+import application.calculator.Calculator;
+import application.calculator.CalculatorFactory;
 import application.view.ViewFactory;
 import application.view.ViewInterface;
 
@@ -19,10 +19,17 @@ public class Driver {
    *        neither, the UI created is based off whether System.console() is null.
    */
   public static void main(String[] args) {
-    ViewFactory viewFactory = new ViewFactory(); // Auto-magically choose which view to use!
+    
+    // Auto-magically choose which view to use!
+    ViewFactory viewFactory = new ViewFactory();
+    // Auto-magically choose which calculator to use!
+    CalculatorFactory calcFactory = new CalculatorFactory();
+    
     ViewInterface view = viewFactory.create(args.length < 1 ? "" : args[0]);
-
-    new CalcController(new CalcModel(), view);
+    Calculator calc = calcFactory.create("");
+    
+    //Everything is ready
+    new CalcController(calc, view);
     view.startView();
   }
 }
