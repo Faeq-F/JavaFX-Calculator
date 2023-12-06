@@ -5,7 +5,7 @@
 	<groupId>cs.rhul.ac.uk</groupId>
 	<artifactId>Calculator</artifactId>
 	<packaging>jar</packaging>
-	<version>4.0</version>
+	<version>5.0</version>
 	<name>Calculator for CS2800 Coursework</name>
 	<url>https://gitlab.cim.rhul.ac.uk/zlac318/CS2800</url>
     <description>A calculator, capable of evaluating expressions in both postfix and infix notation, with a GUI and CLI.</description>

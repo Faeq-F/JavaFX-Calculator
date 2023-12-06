@@ -7,9 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -19,20 +20,18 @@ import javafx.stage.Stage;
  */
 
 public class CalcView extends Application implements ViewInterface {
+
   @FXML
   private Button calcButton;
 
   @FXML
-  private ToggleButton infixCalculatorButton;
+  private TextArea historyPane;
 
   @FXML
-  private TextField inputField;
+  private ToggleButton selectNotationToggle;
 
   @FXML
-  private ToggleButton revPolishCalculatorButton;
-
-  @FXML
-  private TextField totalField;
+  private TextField textField;
 
   // Methods for registering an observer and for accessing user data in the UI
   // These methods build the Observer/Observable pattern
@@ -44,36 +43,34 @@ public class CalcView extends Application implements ViewInterface {
 
   @Override
   public void addTypeObserver(Consumer<String> c) {
-    infixCalculatorButton.setOnAction(event -> c.accept("infix"));
-    revPolishCalculatorButton.setOnAction(event -> c.accept("postfix"));
+    selectNotationToggle.setOnAction(event -> c.accept(""));
   }
-  
+
   @Override
   public void setCalculatorNotification(String notification) {
-    // TODO Auto-generated method stub
-    
+    selectNotationToggle.setText(notification + "\n(click to change)");
   }
 
   @Override
   public String getExpression() {
-    return inputField.getText();
+    return textField.getText();
   }
 
   @Override
   public void setAnswer(String answer) {
-    totalField.setText(answer);
+    historyPane.appendText(textField.getText() + " = " + answer + "\n");
+    textField.setText(answer);
   }
 
   @Override
   public void startView() {
     calcButton.setDisable(false);
-    revPolishCalculatorButton.setDisable(false);
-    infixCalculatorButton.setDisable(false);
+    selectNotationToggle.setDisable(false);
   }
 
   @Override
   public void start(Stage primaryStage) throws IOException {
-    GridPane page = (GridPane) FXMLLoader.load(CalcView.class.getResource("View.fxml"));
+    SplitPane page = (SplitPane) FXMLLoader.load(CalcView.class.getResource("View.fxml"));
     Scene scene = new Scene(page);
     scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     primaryStage.setScene(scene);
@@ -81,10 +78,10 @@ public class CalcView extends Application implements ViewInterface {
     primaryStage.show();
   }
 
-  /////////////////////////////////////////////////////////////////////////////////  
+  /////////////////////////////////////////////////////////////////////////////////
   // Block for creating an instance variable for others to use.
   // Make it a JavaFX singleton. Instance is set by the javafx "initialize" method
-  
+
   private static volatile CalcView instance = null;
 
   @FXML
