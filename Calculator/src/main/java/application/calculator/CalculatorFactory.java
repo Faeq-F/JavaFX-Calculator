@@ -2,6 +2,8 @@ package application.calculator;
 
 /**
  * The Factory (ConcreteCreator) for creating Calculators (ConcreteProduct).
+ * 
+ * @author zlac318
  */
 public class CalculatorFactory {
 

@@ -10,6 +10,7 @@ public class MockView implements ViewInterface {
   public String expression;
   public String answer;
   public String type;
+  public String typeNotification;
 
   @Override
   public void addCalculateObserver(Runnable function) {
@@ -41,5 +42,10 @@ public class MockView implements ViewInterface {
   public void startView() {
     evaluateMethodToBeNotified = null;
     expression = "";
+  }
+
+  @Override
+  public void setCalculatorNotification(String notification) {
+    typeNotification = notification;
   }
 }

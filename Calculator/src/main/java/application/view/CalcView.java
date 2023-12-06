@@ -47,6 +47,12 @@ public class CalcView extends Application implements ViewInterface {
     infixCalculatorButton.setOnAction(event -> c.accept("infix"));
     revPolishCalculatorButton.setOnAction(event -> c.accept("postfix"));
   }
+  
+  @Override
+  public void setCalculatorNotification(String notification) {
+    // TODO Auto-generated method stub
+    
+  }
 
   @Override
   public String getExpression() {
@@ -71,7 +77,7 @@ public class CalcView extends Application implements ViewInterface {
     Scene scene = new Scene(page);
     scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     primaryStage.setScene(scene);
-    primaryStage.setTitle("Calculator (only postfix notation has been implemented)");
+    primaryStage.setTitle("Calculator");
     primaryStage.show();
   }
 
@@ -90,7 +96,7 @@ public class CalcView extends Application implements ViewInterface {
    * This is a Singleton View constructed by the JavaaFX Thread and made available through this
    * method.
    * 
-   * @return the single object representing this view
+   * @return The single object representing this view.
    */
   public static synchronized CalcView getInstance() {
     if (instance == null) {

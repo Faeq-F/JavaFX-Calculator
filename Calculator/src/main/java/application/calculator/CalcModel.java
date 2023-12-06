@@ -52,4 +52,9 @@ public class CalcModel implements Calculator {
         break;
     }
   }
+  
+  @Override
+  public String toString() {
+    return "Currently using the " + current.toString();
+  }
 }

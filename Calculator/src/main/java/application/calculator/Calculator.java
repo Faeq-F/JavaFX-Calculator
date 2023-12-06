@@ -13,9 +13,9 @@ public interface Calculator {
    * arithmetic or a POSTFIX expression. In either case a badly formed expression is
    * notified to the caller by throwing InvalidExpression.
    * 
-   * @param expression the question to be answered
-   * @return the calculated value
-   * @throws InvalidExpression when the expression cannot be evaluated
+   * @param expression The question to be answered.
+   * @return The calculated value.
+   * @throws InvalidExpression When the expression cannot be evaluated.
    */
   public float evaluate(String expression) throws InvalidExpression;
 }
