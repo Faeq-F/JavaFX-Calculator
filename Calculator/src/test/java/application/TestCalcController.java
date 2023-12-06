@@ -1,9 +1,9 @@
-package application.view;
+package application;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import application.calculator.CalculatorFactory;
+import application.view.MockView;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -84,7 +84,7 @@ class TestCalcController {
     view.expression = "5 6 7 + * 2";
     view.calculate();
     assertEquals(
-        "The expression is invalid; The expression is invalid; There are too many numbers!",
+        "The expression is invalid; There are too many numbers!",
         view.answer);
   }
 

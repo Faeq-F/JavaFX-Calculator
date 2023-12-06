@@ -2,7 +2,6 @@ package application;
 
 import application.calculator.Calculator;
 import application.calculator.CalculatorFactory;
-import application.view.CalcController;
 import application.view.ViewFactory;
 import application.view.ViewInterface;
 

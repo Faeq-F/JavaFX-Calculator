@@ -1,8 +1,9 @@
-package application.view;
+package application;
 
 import application.calculator.CalcModel;
 import application.calculator.Calculator;
 import application.calculator.InvalidExpression;
+import application.view.ViewInterface;
 
 /**
  * The controller that sits between the calculator model that does actual evaluation and the view
