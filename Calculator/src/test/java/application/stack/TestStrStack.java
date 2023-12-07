@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import application.Randomizer;
 import application.stack.assembly.EmptyStack;
-import application.stack.assembly.Symbol;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
