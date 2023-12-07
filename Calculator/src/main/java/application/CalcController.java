@@ -29,10 +29,6 @@ public class CalcController {
 
   public void handleTypeChange(String type) {
     ((CalcModel) model).setType(type); // You can only change type if using the CalcModel
-    setCalculatorNotification();
-  }
-  
-  public void setCalculatorNotification() {
     view.setCalculatorNotification(model.toString());
   }
 
@@ -47,6 +43,6 @@ public class CalcController {
     this.model = model;
     view.addCalculateObserver(this::handleCalculation);
     view.addTypeObserver(this::handleTypeChange);
-    setCalculatorNotification();
+    view.setCalculatorNotification(model.toString());
   }
 }

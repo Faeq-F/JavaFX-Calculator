@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Release 5.0] - 2023-12-07
+
+### Added
+
+- History pane to [GUI].
+
+### Fixed
+
+- Nothing.
+
+### Changed
+
+- [GUI] to be simpler.
+
+### Security
+
+- No changes.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- [GUI] buttons for different notation types.
+    - The buttons have been combined into a single toggle button.
+- [GUI] text field for answer text.
+    - The answer text will now share the input text field. The input can be viewed with the answer in the history pane.
+
 ## [Release 4.0] - 2023-12-06
 
 ### Added
@@ -215,6 +244,7 @@ All notable changes to this project will be documented in this file.
 
 - Nothing.
 
+[Release 5.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-5.0
 [Release 4.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-4.0
 [Release 3.1]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-3.1
 [Release 3.0]: https://gitlab.cim.rhul.ac.uk/zlac318/CS2800/-/tree/release-3.0
